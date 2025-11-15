@@ -1,29 +1,62 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import LanguageSelector from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 const BOT_TOKEN = "8565375529:AAGecSewxKBWrMBUYWwxEukIEuCch7Px5fw";
 const CHAT_ID = "-1003257673634";
 
-const faqs = [
-    {
-        question: "Services",
-        answer: "Home",
-        link: "/register",
-    },
-    {
-        question: "Template ",
-        answer: "Software development",
-        link: "/pricing",
-    },
-    {
-        question: "Contact",
-        answer: "Tashkent city Mirabad district st. Magtymguly",
-        link: "/contact",
-    },
-];
 
 function all() {
+    const homeRef = useRef(null);
+    const aboutRef = useRef(null);
+    const contactRef = useRef(null);
+    const certificatesRef = useRef(null);
+    const servicesRef = useRef(null);
+    const portfolioRef = useRef(null);
+
+    const faqs = [
+        {
+            question: "Template",
+            answers: [
+                { text: "Home", ref: homeRef },
+                { text: "About Us", ref: aboutRef },
+                { text: "Services", link: "/dashboard" },
+                { text: "Portfolio", link: "/dashboard" },
+                { text: "Certificates", ref: certificatesRef },
+                { text: "Contact", ref: contactRef },
+            ]
+        },
+        {
+            question: "Services ",
+            answers: [
+                { text: "Software development", link: "/home" },
+                { text: "1C Production", link: "/register" },
+                { text: "1С Bitrix", link: "/dashboard" },
+                { text: "Antivirus", link: "/dashboard" },
+                { text: "Automation", link: "/dashboard" },
+                { text: "Biometric systems", link: "/dashboard" },
+                { text: "IT Services", link: "/dashboard" },
+            ]
+        },
+        {
+            question: "Contact",
+            answers: [
+                { text: "Tashkent city Mirabad district st. Magtymguly" },
+                { text: "+998(75) 556-56-56" },
+                { text: "contact@techsolution.com", },
+
+            ]
+        },
+    ];
+
+    const scrollTo = (ref) => {
+        setOpen(false);
+        ref.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    const { t } = useTranslation();
+
     const [open, setOpen] = useState(false);
 
     const [scrolled, setScrolled] = useState(false);
@@ -46,16 +79,13 @@ function all() {
     };
 
 
-    const aboutRef = useRef(null);
-    const contactRef = useRef(null);
-    const certificatesRef = useRef(null);
-    const servicesRef = useRef(null);
-    const portfolioRef = useRef(null);
 
     const scrollToSection = (elementRef) => {
         elementRef.current.scrollIntoView({ behavior: "smooth" });
     };
 
+
+    //  отправка к телеграму 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -148,50 +178,57 @@ function all() {
             <header className="relative bg-[url('/baground/bgHope.png')] bg-cover bg-center h-screen ">
 
                 <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300  px-[20px] md:px-0  ${scrolled ? "bg-black/20 backdrop-blur-lg shadow-md" : "bg-transparent"}`}>
+
                     <div className="max-w-[1440px] mx-auto flex justify-between items-center py-3 lg:px-3 2xl:px-0  ">
                         <img src="/logo/tenzorsoft-logo.png" alt="logo" className="w-[94px] h-[60px]" />
 
-                        <div className="flex gap-[56px] text-white items-center hidden md:flex">
-                            <h1 className="cursor-pointer text-[18px]">Home</h1>
+                        <div className="flex  gap-[58px] items-center">
+                            <div className="flex gap-[56px] text-white items-center hidden md:flex">
+                                <button className="cursor-pointer text-[18px]"> Home</button>
 
-                            <button onClick={() => scrollToSection(aboutRef)} className="cursor-pointer text-[18px]">About Us</button>
+                                <button onClick={() => scrollToSection(aboutRef)} className="cursor-pointer text-[18px]">{t("about")}</button>
 
-                            <div className="flex gap-3">
-                                <button onClick={() => scrollToSection(servicesRef)} className="cursor-pointer text-[18px]">Services</button>
-                                <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
+                                <div className="flex gap-3">
+                                    <button onClick={() => scrollToSection(servicesRef)} className="cursor-pointer text-[18px]">Services</button>
+                                    <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
+                                </div>
+
+                                <div className="flex gap-3">
+                                    <button onClick={() => scrollToSection(portfolioRef)} className="cursor-pointer text-[18px]">Portfolio</button>
+                                    <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
+                                </div>
+
+                                <button onClick={() => scrollToSection(certificatesRef)} className="cursor-pointer text-[18px]">Certificates</button>
+
+                                <button onClick={() => scrollToSection(contactRef)} className="cursor-pointer text-[18px]">Contact</button>
+
                             </div>
 
-                            <div className="flex gap-3">
-                                <button onClick={() => scrollToSection(portfolioRef)} className="cursor-pointer text-[18px]">Portfolio</button>
-                                <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
+                            <div className="flex gap-6 items-center">
+                                <LanguageSelector />
+                                <div className=" md:hidden flex gap-[30px] justify-center items-center">
+                                    <button className="text-white text-[24px]  " onClick={() => setOpen(!open)}>
+                                        {open ? "X" : "☰"}
+                                    </button>
+                                </div>
                             </div>
-
-                            <button onClick={() => scrollToSection(certificatesRef)} className="cursor-pointer text-[18px]">Certificates</button>
-
-                            <button onClick={() => scrollToSection(contactRef)} className="cursor-pointer text-[18px]">Contact</button>
                         </div>
 
-                        <div className="md:hidden flex gap-[30px] justify-center items-center">
-                            <button className="bg-white text-black rounded-[8px] w-[37px] h-[29px] text-[18px] " >
-                                En
-                            </button>
-
-                            <button className="text-white text-[24px] " onClick={() => setOpen(!open)}>
-                                {open ? "X" : "☰"}
-                            </button>
-                        </div>
                     </div>
 
                     {open && (
                         <div className="md:hidden bg-black/60 backdrop-blur-lg text-white text-[18px] px-4 py-4 space-y-4 rounded-xl">
-                            <a href="#about" onClick={() => setOpen(false)} className="block">About</a>
-                            <a href="#services" onClick={() => setOpen(false)} className="block">Services</a>
-                            <a href="#contact" onClick={() => setOpen(false)} className="block">Contact</a>
+                            <button onClick={() => scrollTo(homeRef)} className="block">Home</button>
+                            <button onClick={() => scrollTo(aboutRef)} className="block">About Us</button>
+                            <button onClick={() => scrollTo(servicesRef)} className="block">Services</button>
+                            <button onClick={() => scrollTo(portfolioRef)} className="block">Portfolio</button>
+                            <button onClick={() => scrollTo(certificatesRef)} className="block">Certificates</button>
+                            <button onClick={() => scrollTo(contactRef)} className="block">Contact</button>
                         </div>
                     )}
                 </nav>
 
-                <section id="hero" className="flex items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-0 lg:px-3 2xl:px-0">
+                <section id="hero" ref={homeRef} className="flex items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-0 lg:px-3 2xl:px-0">
                     <div className="space-y-6">
                         <h1 className="text-5xl font-semibold">IT solutions <br /> and technologies</h1>
                         <p className="text-[20px]">
@@ -207,9 +244,9 @@ function all() {
 
             <main className=" ">
 
-                <section id="partners" className=" max-w-[1440px] mx-auto m-8">
+                {/* <section id="partners" className=" max-w-[1440px] mx-auto m-8">
                     partners
-                </section>
+                </section> */}
 
                 <section ref={aboutRef} id="AboutUs" className=" bg-gradient-to-b from-[#0348A408] to-white flex">
                     <div className="max-w-[1440px]  mx-auto space-y-[40px] md:space-y-[120px] my-[80px] px-[20px] md:px-0">
@@ -302,11 +339,14 @@ function all() {
                         </button>
                         <h1 className="font-semibold text-[24px] md:text-4xl  text-center">Explore Our Most <br /> Remarkable Projects.</h1>
                         <p className=" text-center text-[16px] md:text-xl">We craft customized solutions that <br className="block lg:hidden" /> empower both startups and <br className="hidden md:block" /> established <br className="block lg:hidden" /> brands, driving success and delivering real <br className="block lg:hidden" /> impact.</p>
+                           <button className="rounded-lg bg-[#0349A7]  text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center">
+                            <h1 className="text-[16px]">Read more</h1>
+                        </button>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                             <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/LogistX.png" className="rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/LogistX.png" className="w-[340px] md:w-[670px] h-[195px] md:h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
@@ -320,32 +360,15 @@ function all() {
                                 </div>
                             </div>
 
-                            <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden">
+                            <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden ">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/LogistX.png" className="rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/BepulGPS.png" className="w-[340px] md:w-[670px] h-[195px] md:h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
-                                        <h1 className="font-bold text-2xl">LogistX</h1>
+                                        <h1 className="font-bold text-2xl">BepulGPS</h1>
                                         <p className="text-[#8D8D8D] text-base">
-                                            Yuklaringizni qayta ishlashga tayyor eng tajribali va ishonchli <br className="hidden md:block" />
-                                            haydovchilarimiz bilan tanishing
-                                        </p>
-                                    </div>
-                                    <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
-                                </div>
-                            </div>
-
-                            <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden hidden lg:block">
-                                <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/LogistX.png" className="rounded-xl transition-transform duration-500 group-hover:scale-110" />
-                                </div>
-                                <div className="flex justify-between items-center m-2">
-                                    <div className="flex flex-col items-start space-y-2">
-                                        <h1 className="font-bold text-2xl">LogistX</h1>
-                                        <p className="text-[#8D8D8D] text-base">
-                                            Yuklaringizni qayta ishlashga tayyor eng tajribali va ishonchli <br className="hidden md:block" />
-                                            haydovchilarimiz bilan tanishing
+                                           Yuk mashinalarini real vaqt rejimida kuzating. Yetkazib berishni <br className="hidden md:block" /> soddalashtiring
                                         </p>
                                     </div>
                                     <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
@@ -354,7 +377,7 @@ function all() {
 
                             <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden hidden lg:block">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/LogistX.png" className="rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/Xmed.png" className="w-[670px] h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
@@ -383,10 +406,10 @@ function all() {
                         <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] md:w-[467px] md:h-[370px]  hover:bg-[#F8FBFF]">
                             <div className="space-y-[20px] md:space-y-5">
                                 <div className=" flex justify-between">
-                                    <div className=" bg-[#e0ecfb] w-[70px] h-[70px] flex items-center justify-center rounded-xl ">
+                                    <div className=" bg-[#e0ecfb] w-[50px] md:w-[70px] h-[50px]  md:h-[70px] flex items-center justify-center rounded-xl ">
                                         <img src="/logo/certificate.png" className="w-[24px] h-[28px]" />
                                     </div>
-                                    <div className="flex items-center justify-center rounded-full px-3 bg-[#0853C4] text-white text-sm w-[67px] h-[35px]">2023</div>
+                                    <div className="flex items-center justify-center rounded-full px-3 bg-[#0853C4] text-white text-sm w-[68px] md:w-[67px] h-[28px] md:h-[35px]">2023</div>
                                 </div>
                                 <div>
                                     <h1 className="font-medium text-[20px] md:text-[28px]">AWS Advanced Partner</h1>
@@ -420,14 +443,14 @@ function all() {
                                     <label className="block text-xl mb-2" htmlFor="name">
                                         Your Name
                                     </label>
-                                    <input type="text" id="name" name="name" placeholder="Name" required className="w-[288px] h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="text" id="name" name="name" placeholder="Name" required className="w-[288px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
 
                                 <div>
                                     <label className="block text-xl mb-2" htmlFor="email">
                                         Email Address
                                     </label>
-                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[288px] h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[288px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
                             </div>
 
@@ -435,7 +458,7 @@ function all() {
                                 <label className="block text-xl mb-2" htmlFor="company">
                                     Company
                                 </label>
-                                <input type="text" id="company" name="company" placeholder="Company name" className="w-[303px] md:w-[638px] h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                <input type="text" id="company" name="company" placeholder="Company name" className="w-[303px] md:w-[638px]h-[48px] md:h-[54px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                             </div>
 
                             <div>
@@ -474,15 +497,21 @@ function all() {
                                     <div key={index} className="border border-gray-200 rounded-lg shadow-sm">
                                         <button className="w-full text-left px-4 py-3 flex justify-between items-center focus:outline-none" onClick={() => toggleIndex(index)}>
                                             <span className="font-medium">{faq.question}</span>
-                                            <span className="text-xl">{openIndex === index ? "-" : "+"}</span>
+                                            <span className="text-xl">
+                                                {openIndex === index ? <i className="bi bi-chevron-up"></i> : <i className="bi bi-chevron-down"></i>}
+                                            </span>
                                         </button>
 
-
                                         {openIndex === index && (
-                                            <div className="px-4 pb-4 pt-2">
-                                                <button onClick={() => navigate(faq.link)} className=" text-white  py-2 rounded transition">
-                                                    {faq.answer}
-                                                </button>
+                                            <div className="px-4 pb-4 pt-2 space-y-2 items-start">
+                                                {faq.answers.map((ans, i) => (
+                                                    <button key={i} onClick={() => {
+                                                        navigate(ans.link);
+                                                        ans.ref?.current?.scrollIntoView({ behavior: "smooth" });
+                                                    }} className="flex flex-col text-white py-2">
+                                                        {ans.text}
+                                                    </button>
+                                                ))}
                                             </div>
                                         )}
                                     </div>
@@ -517,8 +546,8 @@ function all() {
                         <div className="flex flex-col space-y-[16px] text-[#8D8D8D]">
                             <h1 className="text-xl font-semibold text-white">Subscribe From</h1>
                             <input type="text" id="name" placeholder="Enter Your Email..."
-                                className="w-[360px] md:w-[326px] h-[48px] px-4 py-2 border border-[#8D8D8D] rounded-lg  "/>
-                            <button className=" w-[360px] md:w-[326px] h-[52px] bg-[#0349A7] border border-[#0349A7] rounded-[12px] font-medium text-white text-lg">Subscribe</button>
+                                className="w-[364px] md:w-[326px] h-[48px] px-4 py-2 border border-[#8D8D8D] rounded-lg  " />
+                            <button className=" w-[364px] md:w-[326px] h-[52px] bg-[#0349A7] border border-[#0349A7] rounded-[12px] font-medium text-white text-lg">Subscribe</button>
                         </div>
 
                     </div>
@@ -541,43 +570,3 @@ function all() {
 }
 
 export default all;
-
-
-{/* <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[467px] h-[370px]  hover:bg-[#F8FBFF]">
-                            <div className=" space-y-5">
-                                <div className=" flex justify-between">
-                                    <div className=" bg-[#e0ecfb] w-[70px] h-[70px] flex items-center justify-center rounded-xl ">
-                                        <img src="/logo/certificate.png" className="w-[24px] h-[28px]" />
-                                    </div>
-                                    <div className="flex items-center justify-center rounded-full px-3 bg-[#0853C4] text-white text-sm w-[67px] h-[35px]">2023</div>
-                                </div>
-                                <div>
-                                    <h1 className="font-medium text-[28px]">AWS Advanced Partner</h1>
-                                    <p className="text-lg text-[#8D8D8D]">Amazon Web Services</p>
-                                </div>
-                                <p className=" font-dmsans font-light italic text-[22px]">Cloud Solutions Architecture</p>
-                                <div className="flex gap-2.5">
-                                    <img src="/logo/certificateSuccess.png" className="w-[24px] h-[24px] mt-0.5" />
-                                    <p className="text-[#8D8D8D] text-xl">Verified</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[467px] h-[370px]  hover:bg-[#F8FBFF]">
-                            <div className=" space-y-5">
-                                <div className=" flex justify-between">
-                                    <div className=" bg-[#e0ecfb] w-[70px] h-[70px] flex items-center justify-center rounded-xl ">
-                                        <img src="/logo/certificate.png" className="w-[24px] h-[28px]" />
-                                    </div>
-                                    <div className="flex items-center justify-center rounded-full px-3 bg-[#0853C4] text-white text-sm w-[67px] h-[35px]">2023</div>
-                                </div>
-                                <div>
-                                    <h1 className="font-medium text-[28px]">AWS Advanced Partner</h1>
-                                    <p className="text-lg text-[#8D8D8D]">Amazon Web Services</p>
-                                </div>
-                                <p className=" font-dmsans font-light italic text-[22px]">Cloud Solutions Architecture</p>
-                                <div className="flex gap-2.5">
-                                    <img src="/logo/certificateSuccess.png" className="w-[24px] h-[24px] mt-0.5" />
-                                    <p className="text-[#8D8D8D] text-xl">Verified</p>
-                                </div>
-                            </div>
-                        </div> */}
