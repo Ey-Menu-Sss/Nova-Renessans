@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSelector from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
+
 
 const BOT_TOKEN = "8565375529:AAGecSewxKBWrMBUYWwxEukIEuCch7Px5fw";
 const CHAT_ID = "-1003257673634";
@@ -184,23 +186,23 @@ function all() {
 
                         <div className="flex  gap-[58px] items-center">
                             <div className="flex gap-[56px] text-white items-center hidden md:flex">
-                                <button className="cursor-pointer text-[18px]"> Home</button>
+                                <button className="cursor-pointer text-[18px]">{t("navbar.home")} </button>
 
-                                <button onClick={() => scrollToSection(aboutRef)} className="cursor-pointer text-[18px]">{t("about")}</button>
+                                <button onClick={() => scrollToSection(aboutRef)} className="cursor-pointer text-[18px]">{t("navbar.about")}</button>
 
                                 <div className="flex gap-3">
-                                    <button onClick={() => scrollToSection(servicesRef)} className="cursor-pointer text-[18px]">Services</button>
+                                    <button onClick={() => scrollToSection(servicesRef)} className="cursor-pointer text-[18px]">{t("navbar.services")}</button>
                                     <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
                                 </div>
 
                                 <div className="flex gap-3">
-                                    <button onClick={() => scrollToSection(portfolioRef)} className="cursor-pointer text-[18px]">Portfolio</button>
+                                    <button onClick={() => scrollToSection(portfolioRef)} className="cursor-pointer text-[18px]">{t("navbar.portfolio")}</button>
                                     <i className="bi bi-caret-down-fill text-[8px] mt-2"></i>
                                 </div>
 
-                                <button onClick={() => scrollToSection(certificatesRef)} className="cursor-pointer text-[18px]">Certificates</button>
+                                <button onClick={() => scrollToSection(certificatesRef)} className="cursor-pointer text-[18px]">{t("navbar.certificates")}</button>
 
-                                <button onClick={() => scrollToSection(contactRef)} className="cursor-pointer text-[18px]">Contact</button>
+                                <button onClick={() => scrollToSection(contactRef)} className="cursor-pointer text-[18px]">{t("navbar.contact")}</button>
 
                             </div>
 
@@ -230,12 +232,9 @@ function all() {
 
                 <section id="hero" ref={homeRef} className="flex items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-0 lg:px-3 2xl:px-0">
                     <div className="space-y-6">
-                        <h1 className="text-5xl font-semibold">IT solutions <br /> and technologies</h1>
-                        <p className="text-[20px]">
-                            We offer cutting-edge IT solutions and modern technologies that will <br />
-                            help your business stay one step ahead of the competition.
-                        </p>
-                        <button className="bg-[#0349A7] text-white w-[147px] h-[52px] rounded-xl">Read More</button>
+                        <h1 className="text-5xl font-semibold">  <Trans i18nKey="hero.title" /> </h1>
+                        <p className="text-[20px]"> <Trans i18nKey="hero.description" /> </p>
+                        <button className="bg-[#0349A7] text-white w-[147px] h-[52px] rounded-xl">{t("hero.cta")}</button>
                     </div>
                 </section>
 
@@ -253,10 +252,10 @@ function all() {
                         <div className="space-y-4 items-center justify-center flex flex-col text-center">
                             <button className="rounded-full text-[#0349A7] font-medium bg-[#E8F2FF] flex gap-3 w-[184px] md:w-[202px] h-[50px] md:h-[55px] text-center justify-center items-center">
                                 <i className="bi bi-buildings text-2xl"></i>
-                                <h1 className="text-2xl">About Us</h1>
+                                <h1 className="text-2xl"> <Trans i18nKey="aboutSection.badge" /></h1>
                             </button>
-                            <h1 className=" font-semibold text-[28px] md:text-4xl">We Create Bunch Of <br />Enthusiastic & Creative Minds</h1>
-                            <p className="text-xl">Tenzor Soft LLC is a leading software developer in Uzbekistan, operating <br />in the IT services market since 2008. For over 15 years,</p>
+                            <h1 className=" font-semibold text-[28px] md:text-4xl"> <Trans i18nKey="aboutSection.title" /></h1>
+                            <p className="text-xl"><Trans i18nKey="aboutSection.subtitle" /></p>
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center justify-center gap-[49px]">
@@ -265,8 +264,8 @@ function all() {
 
                             <div className=" space-y-[20px]">
                                 <div className="space-y-[12px]">
-                                    <h1 className="font-medium text-center text-4xl">Why Choose Us?</h1>
-                                    <p className="text-lg">With over 15 years of experience in the IT industry, we've established <br className="hidden md:block" /> ourselves as a trusted partner for businesses seeking innovative solutions. <br className="hidden md:block" /> Our team of experts brings together diverse skills and perspectives to tackle <br className="hidden md:block" /> even the most complex challenges... </p>
+                                    <h1 className="font-medium text-center text-4xl">{t("aboutSection.whyTitle")}</h1>
+                                    <p className="text-lg"><Trans i18nKey="hero.whyDescription"> <br className="hidden md:block" /></Trans></p>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] md:gap-[76px] justify-items-center md:justify-items-start">

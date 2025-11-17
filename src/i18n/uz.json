@@ -1,4 +1,204 @@
 {
-  "hello": "Salom",
-  "about": "Biz haqimizda"
+  "navbar": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "services": "Xizmatlar",
+    "portfolio": "Portfolio",
+    "certificates": "Sertifikatlar",
+    "contact": "Bog'lanish",
+    "readMore": "Batafsil o'qish"
+  },
+  "hero": {
+    "title": "IT yechimlari <br/> va texnologiyalari",
+    "description": "Biz biznesingizni raqobatchilardan bir qadam oldinda ushlab turishga <br/> yordam beradigan ilg'or IT yechimlari va zamonaviy texnologiyalarni taklif etamiz.",
+    "cta": "Batafsil o'qish"
+  },
+  "aboutSection": {
+    "badge": "Biz haqimizda",
+    "title": "Biz ilhomli va ijodkor onglardan iborat jamoa yaratyapmiz",
+    "subtitle": "Tenzor Soft LLC 2008 yildan beri O'zbekistonda IT xizmatlari bozorida faoliyat yuritayotgan yetakchi dasturiy ta'minot ishlab chiqaruvchisidir. 15 yildan ortiq vaqt davomida biz ishonchli raqamli yechimlar yaratib kelmoqdamiz.",
+    "whyTitle": "Nega aynan biz?",
+    "whyDescription": "IT sohasidagi 15 yildan ortiq tajribamiz tufayli biz innovatsion yechimlarni izlayotgan bizneslar uchun ishonchli hamkor bo'ldik. Mutaxassislarimizning bilim va qarashlari murakkab vazifalarni ham hal etishga yordam beradi.",
+    "features": [
+      {
+        "title": "Samarali loyiha boshqaruvi",
+        "body": "Zamonaviy metodologiyalar va isbotlangan amaliyotlardan foydalanib, loyihalarni to'liq qo'llab-quvvatlaymiz."
+      },
+      {
+        "title": "Kross-platformali va moslashuvchan dizayn",
+        "body": "Har qanday qurilmada mukammal ko'rinadigan dizaynlar yaratamiz."
+      },
+      {
+        "title": "Monitoring va vaqtni hisoblash",
+        "body": "Vaqtni nazorat qilish va samaradorlikni oshirish uchun aniq yechimlar."
+      },
+      {
+        "title": "Innovatsion mobil ilovalar yaratish",
+        "body": "Bozorda ajralib turuvchi maxsus mobil yechimlar ishlab chiqamiz."
+      }
+    ]
+  },
+  "servicesSection": {
+    "badge": "Xizmatlar",
+    "description": "FixFlow kompaniyasida biz uyingiz yoki biznesingiz barqaror ishlashi uchun yuqori sifatli santexnika xizmatlarini taqdim etishdan faxrlanamiz.",
+    "cards": [
+      {
+        "title": "Dasturiy ta'minot ishlab chiqish",
+        "body": "Veb-ishlab chiqish (saytlar va veb-ilovalar yaratish)"
+      },
+      {
+        "title": "Sun'iy intellekt va mashinaviy o'qitish",
+        "body": "Aqlli tizimlar va algoritmlarni ishlab chiqish."
+      },
+      {
+        "title": "1C mahsulotlari",
+        "body": "1C mahsulotlari: biznesni boshqarish bo'yicha integratsiyalashgan yechimlar"
+      },
+      {
+        "title": "1C Bitrix",
+        "body": "1C-Bitrix: ishlab chiqish, integratsiya va sozlash"
+      },
+      {
+        "title": "Antiviruslar",
+        "body": "Biznesingiz va uyingiz uchun professional himoya"
+      },
+      {
+        "title": "IT xizmatlari",
+        "body": "IT xizmatlari: serverlar, korporativ tarmoqlar va Wi-Fi zonalarini sozlash hamda qo'llab-quvvatlash"
+      },
+      {
+        "title": "Avtomatlashtirish",
+        "body": "Biznes jarayonlarini ilg'or texnologiyalar yordamida avtomatlashtirish"
+      },
+      {
+        "title": "Biometrik tizimlar",
+        "body": "Biometrik tizimlar va sun'iy intellekt"
+      }
+    ]
+  },
+  "portfolioSection": {
+    "badge": "Portfolio",
+    "title": "Eng ajoyib loyihalarimizni kashf eting.",
+    "description": "Biz startaplar va yirik brendlarni muvaffaqiyatga yetaklaydigan, real ta'sir ko'rsatadigan moslashtirilgan yechimlarni yaratamiz.",
+    "cta": "Batafsil o'qish",
+    "projects": [
+      {
+        "title": "LogistX",
+        "body": "Yuklaringizni qayta ishlashga tayyor eng tajribali va ishonchli haydovchilarimiz bilan tanishing."
+      },
+      {
+        "title": "BepulGPS",
+        "body": "Yuk mashinalarini real vaqt rejimida kuzating va yetkazib berishni soddalashtiring."
+      },
+      {
+        "title": "LogistX",
+        "body": "Yuklaringizni qayta ishlashga tayyor eng tajribali va ishonchli haydovchilarimiz bilan tanishing."
+      }
+    ]
+  },
+  "certificateSection": {
+    "badge": "Sertifikatlar",
+    "title": "Sanoat tan olishi",
+    "description": "Mukammallikka bo'lgan sadoqatimiz yetakchi sertifikatlar va hamkorliklar bilan tasdiqlangan",
+    "cards": [
+      {
+        "title": "AWS Advanced Partner",
+        "subtitle": "Amazon Web Services",
+        "focus": "Bulutli yechimlar arxitekturasi",
+        "status": "Tasdiqlangan",
+        "year": "2023"
+      }
+    ]
+  },
+  "contactSection": {
+    "badge": "Bog'lanish",
+    "title": "Keling, suhbatni boshlaymiz",
+    "description": "Loyihangiz bormi? Sizdan xabar olishdan mamnun bo'lamiz. Xabar qoldiring va biz imkon qadar tez javob beramiz.",
+    "form": {
+      "nameLabel": "Ismingiz",
+      "namePlaceholder": "Ism",
+      "emailLabel": "Elektron pochta manzili",
+      "emailPlaceholder": "example@mail.com",
+      "companyLabel": "Kompaniya",
+      "companyPlaceholder": "Kompaniya nomi",
+      "messageLabel": "Xabar",
+      "messagePlaceholder": "Loyihangiz haqida bizga yozing"
+    },
+    "submit": "Yuborish"
+  },
+  "footer": {
+    "tagline": "2008 yildan beri innovatsion texnologik yechimlar orqali bizneslarni o'zgartirib kelamiz.",
+    "columns": {
+      "template": {
+        "title": "Shablon",
+        "links": [
+          "Bosh sahifa",
+          "Biz haqimizda",
+          "Xizmatlar",
+          "Portfolio",
+          "Sertifikatlar",
+          "Bog'lanish"
+        ]
+      },
+      "services": {
+        "title": "Xizmatlar",
+        "links": [
+          "Dasturiy ta'minot ishlab chiqish",
+          "1C ishlab chiqarish",
+          "1C Bitrix",
+          "Antiviruslar",
+          "Avtomatlashtirish",
+          "Biometrik tizimlar",
+          "IT xizmatlari"
+        ]
+      },
+      "contact": {
+        "title": "Bog'lanish",
+        "address": "Toshkent shahri, Mirobod tumani, Maxtumquli ko'chasi",
+        "phone": "+998(75) 556-56-56",
+        "email": "contact@techsolution.com"
+      }
+    },
+    "subscribeHeading": "Obuna bo'limi",
+    "subscribePlaceholder": "Emailingizni kiriting...",
+    "subscribeCta": "Obuna bo'lish",
+    "rights": "© 2024 TechSolutions. Barcha huquqlar himoyalangan.",
+    "terms": "Foydalanish shartlari",
+    "privacy": "Maxfiylik siyosati"
+  },
+  "faq": {
+    "items": [
+      {
+        "question": "Shablon",
+        "answers": [
+          "Bosh sahifa",
+          "Biz haqimizda",
+          "Xizmatlar",
+          "Portfolio",
+          "Sertifikatlar",
+          "Bog'lanish"
+        ]
+      },
+      {
+        "question": "Xizmatlar",
+        "answers": [
+          "Dasturiy ta'minot ishlab chiqish",
+          "1C ishlab chiqarish",
+          "1C Bitrix",
+          "Antiviruslar",
+          "Avtomatlashtirish",
+          "Biometrik tizimlar",
+          "IT xizmatlari"
+        ]
+      },
+      {
+        "question": "Bog'lanish",
+        "answers": [
+          "Toshkent shahri, Mirobod tumani, Maxtumquli ko'chasi",
+          "+998(75) 556-56-56",
+          "contact@techsolution.com"
+        ]
+      }
+    ]
+  }
 }

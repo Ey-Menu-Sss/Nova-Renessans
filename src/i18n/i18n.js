@@ -13,7 +13,13 @@ i18n.use(initReactI18next).init({
   },
   lng: "uz",
   fallbackLng: "uz",
-  interpolation: { escapeValue: false }
+
+  interpolation: { escapeValue: false },
+
+  react: {
+    transSupportBasicHtmlNodes: true,   
+    transKeepBasicHtmlNodes: true    
+  }
 });
 
 export default i18n;
