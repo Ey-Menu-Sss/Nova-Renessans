@@ -420,7 +420,7 @@ function all() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 
-                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[467px] xl:h-[370px]  hover:bg-[#F8FBFF]">
+                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[415px] xl:h-[370px]  hover:bg-[#F8FBFF]">
                             <div className="space-y-[20px] md:space-y-5">
                                 <div className=" flex justify-between">
                                     <div className=" bg-[#e0ecfb] w-[50px] xl:w-[70px] h-[50px]  xl:h-[70px] flex items-center justify-center rounded-xl ">
@@ -440,7 +440,7 @@ function all() {
                             </div>
                         </div>
 
-                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[467px] xl:h-[370px]  hover:bg-[#F8FBFF]">
+                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[415px] xl:h-[370px]  hover:bg-[#F8FBFF]">
                             <div className="space-y-[20px] md:space-y-5">
                                 <div className=" flex justify-between">
                                     <div className=" bg-[#e0ecfb] w-[50px] xl:w-[70px] h-[50px]  xl:h-[70px] flex items-center justify-center rounded-xl ">
@@ -460,7 +460,7 @@ function all() {
                             </div>
                         </div>
 
-                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[467px] xl:h-[370px]  hover:bg-[#F8FBFF]">
+                        <div className="shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[415px] xl:h-[370px]  hover:bg-[#F8FBFF]">
                             <div className="space-y-[20px] md:space-y-5">
                                 <div className=" flex justify-between">
                                     <div className=" bg-[#e0ecfb] w-[50px] xl:w-[70px] h-[50px]  xl:h-[70px] flex items-center justify-center rounded-xl ">
@@ -479,9 +479,6 @@ function all() {
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
                 </section>
 
