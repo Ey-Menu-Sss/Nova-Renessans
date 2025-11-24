@@ -272,7 +272,7 @@ function all() {
                     <div className="space-y-6">
                         <h1 className="text-5xl md:text-6xl  font-semibold">  <Trans i18nKey="hero.title" /> </h1>
                         <p className="text-[20px] md:text-[25px]"> <Trans i18nKey="hero.description" /> </p>
-                        <button className="hover:border-2 hover:border-[#0349A7] bg-[#0349A7] hover:bg-white hover:text-[#0349A7] text-white w-[147px] h-[52px] rounded-xl text-lg">{t("hero.cta")}</button>
+                        <button className="hover:border-2 hover:border-[#006DFF] bg-[#006DFF] hover:bg-white hover:text-[#006DFF] text-white w-[147px] h-[52px] rounded-xl text-lg">{t("hero.cta")}</button>
                     </div>
                 </section>
 
@@ -399,7 +399,7 @@ function all() {
                         {cardsData.map((card, index) => (
                             <div key={index} className="relative flex flex-col h-[175px] w-[345px] md:h-[285px] p-[16px] md:p-6 rounded-2xl border border-white shadow-xl shadow-gray-200   space-y-1 hover:bg-[#F3F8FF]">
                                 <div className="flex gap-4 items-center">
-                                    <span className="flex items-center shrink-0 justify-center w-[60px] h-[60px] rounded-full bg-[#0349A7]">
+                                    <span className="flex items-center shrink-0 justify-center w-[60px] h-[60px] rounded-full bg-[#006DFF]">
                                         <img src={card.icon} className="w-[34px]" />
                                     </span>
                                     <div className=" font-semibold text-[20px]  text-[#1B2845] block lg:hidden">{card.description}</div>
@@ -420,7 +420,7 @@ function all() {
                         </button>
                         <h1 className="font-semibold text-[24px] md:text-4xl  text-center  md:w-[440px]">{t("portfolioSection.title")}</h1>
                         <p className=" text-center text-[16px] md:text-xl w-[335px] md:w-[700px]">{t("portfolioSection.description")}</p>
-                        <button className="rounded-lg bg-[#0349A7] hover:bg-white hover:border-2 hover:border-[#0349A7] hover:text-[#0349A7] text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center">
+                        <button className="rounded-lg bg-[#006DFF] hover:bg-white hover:border-2 hover:border-[#5492E4] hover:text-[#5492E4] text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center">
                             <h1 className="text-[16px]">{t("portfolioSection.cta")}</h1>
                         </button>
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
@@ -486,7 +486,7 @@ function all() {
                                             <div className="bg-[#e0ecfb] w-[50px] xl:w-[70px] h-[50px] xl:h-[70px] flex items-center justify-center rounded-xl">
                                                 <img src={card.icon} className="w-[24px] h-[28px]" />
                                             </div>
-                                            <div className="flex items-center justify-center rounded-full px-3 bg-[#0853C4] text-white text-sm w-[68px] xl:w-[67px] h-[28px] xl:h-[35px]">
+                                            <div className="flex items-center justify-center rounded-full px-3 bg-[#006DFF] text-white text-sm w-[68px] xl:w-[67px] h-[28px] xl:h-[35px]">
                                                 {t(card.badge)}
                                             </div>
                                         </div>
@@ -570,7 +570,6 @@ function all() {
                                 <input type="text" id="company" name="company" placeholder={t("contactSection.form.companyPlaceholder")} className="w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                             </div>
 
-
                             <div>
                                 <label className="block text-xl mb-2" htmlFor="message">
                                     {t("contactSection.form.messageLabel")}
@@ -582,7 +581,7 @@ function all() {
                                 <input type="file" name="file" className="flex items-center display:none w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-3 border border-gray-300 rounded-lg " />
                             </div>
 
-                            <button type="submit" className="w-[303px] md:w-[638px] h-[52px] bg-[#0349A7] border-2 border-[#0349A7] hover:text-[#0349A7] text-white py-2 px-4 rounded-lg hover:bg-white transition-colors" >
+                            <button type="submit" className="w-[303px] md:w-[638px] h-[52px] bg-[#006DFF] border-2 border-[#006DFF] hover:text-[#006DFF] text-white py-2 px-4 rounded-lg hover:bg-white transition-colors" >
                                 {t("contactSection.submit")}
                             </button>
                         </form>
@@ -707,7 +706,7 @@ function all() {
                                     {t("footer.subscribeHeading")}
                                 </h1>
                                 <input type="text" id="name" placeholder={t("footer.subscribePlaceholder")} className="md:w-[420px] lg:w-[200px] xl:w-[320px] h-[48px] px-4 py-2 border border-[#8D8D8D] rounded-lg" />
-                                <button className="md:w-[420px] lg:w-[200px] xl:w-[320px] h-[52px] hover:bg-white hover:text-[#0349A7] bg-[#0349A7] hover:border-2 hover:border-[#0349A7] rounded-[12px] font-medium text-white text-lg">
+                                <button className="md:w-[420px] lg:w-[200px] xl:w-[320px] h-[52px] hover:bg-white hover:text-[#006DFF] bg-[#006DFF] hover:border-2 hover:border-[#006DFF] rounded-[12px] font-medium text-white text-lg">
                                     {t("footer.subscribeCta")}
                                 </button>
                             </div>
