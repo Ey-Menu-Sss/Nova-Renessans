@@ -10,7 +10,7 @@ const CHAT_ID = "-1003257673634";
 
 function all() {
     const [openId, setOpenId] = useState(null);
-
+    // кождая карточка сертификата 
     const certificates = [
         {
             id: 0,
@@ -20,33 +20,33 @@ function all() {
             subtitle: "certificateSection.cards.0.subtitle",
             focus: "certificateSection.cards.0.focus",
             status: "certificateSection.cards.0.status",
-            modalImage: "/image/itpark.jpeg",
+            modalImage: "/image/tenzor.jpg",
             modalTitle: "IT Park",
         },
-        {
-            id: 1,
-            icon: "/logo/certificate.png",
-            badge: "certificateSection.cards.1.year",
-            title: "certificateSection.cards.1.title",
-            subtitle: "certificateSection.cards.1.subtitle",
-            focus: "certificateSection.cards.1.focus",
-            status: "certificateSection.cards.1.status",
-            modalImage: "/image//itparkt.jpg",
-            modalTitle: "IT Park",
-        },
-        {
-            id: 2,
-            icon: "/logo/certificate.png",
-            badge: "certificateSection.cards.2.year",
-            title: "certificateSection.cards.2.title",
-            subtitle: "certificateSection.cards.2.subtitle",
-            focus: "certificateSection.cards.2.focus",
-            status: "certificateSection.cards.2.status",
-            modalImage: "/image/frontend.jpeg",
-            modalTitle: "Frontend Bootcamp",
-        },
+        // {
+        //     id: 1,
+        //     icon: "/logo/certificate.png",
+        //     badge: "certificateSection.cards.1.year",
+        //     title: "certificateSection.cards.1.title",
+        //     subtitle: "certificateSection.cards.1.subtitle",
+        //     focus: "certificateSection.cards.1.focus",
+        //     status: "certificateSection.cards.1.status",
+        //     modalImage: "/image//itparkt.jpg",
+        //     modalTitle: "IT Park",
+        // },
+        // {
+        //     id: 2,
+        //     icon: "/logo/certificate.png",
+        //     badge: "certificateSection.cards.2.year",
+        //     title: "certificateSection.cards.2.title",
+        //     subtitle: "certificateSection.cards.2.subtitle",
+        //     focus: "certificateSection.cards.2.focus",
+        //     status: "certificateSection.cards.2.status",
+        //     modalImage: "/image/frontend.jpeg",
+        //     modalTitle: "Frontend Bootcamp",
+        // },
     ];
-
+    //header
     const homeRef = useRef(null);
     const aboutRef = useRef(null);
     const contactRef = useRef(null);
@@ -98,8 +98,6 @@ function all() {
         ref.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-
-
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -129,6 +127,7 @@ function all() {
         const email = e.target.email.value;
         const company = e.target.company.value;
         const message = e.target.message.value;
+        const file = e.target.file.files[0];
 
         const text = `
        📩 *Yangi xabar!*
@@ -148,6 +147,18 @@ function all() {
                     parse_mode: "Markdown",
                 }),
             });
+
+            if (file) {
+                const formData = new FormData();
+                formData.append("chat_id", CHAT_ID);
+                formData.append("document", file);
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+                    method: "POST",
+                    body: formData,
+                });
+            }
+
             alert("✅ Xabaringiz muvaffaqiyatli yuborildi!");
             e.target.reset();
         } catch (error) {
@@ -155,7 +166,7 @@ function all() {
             alert("❌ Xabar yuborishda xatolik yuz berdi!");
         }
     };
-
+    // сервис сексция 
     const cardsData = [
         {
             title: "Карточка 1",
@@ -464,8 +475,9 @@ function all() {
                     </button>
                     <h1 className=" font-bold text-[24px] md:text-4xl text-center">{t("certificateSection.title")}</h1>
                     <p className="text-center text-[16px] md:text-xl w-[295px] md:w-[690px] ">{t("certificateSection.description")}</p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                    <div className="flex items-center justify-center">
+{/*
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"> */}
                         {certificates.map((card) => (
                             <div key={card.id}>
                                 <div onClick={() => setOpenId(card.id)} className="cursor-pointer shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[415px] xl:h-[370px] hover:bg-[#F8FBFF]" >
@@ -501,21 +513,18 @@ function all() {
 
                                 {/* Modal */}
                                 {openId === card.id && (
-                                    <div className="fixed inset-0 bg-black/30 bg-opacity-50 flex items-center justify-center z-50">
-                                        <div className="bg-white p-2 md:p-4 rounded-xl relative flex flex-col">
-                                            <div className="flex justify-between items-center mb-2 px-4">
-                                                <h1 className="font-bold text-xl">{card.modalTitle}</h1>
-                                                <button
-                                                    onClick={() => setOpenId(null)}
-                                                    className="text-sm hover:text-gray-500 border border-black hover:border-gray-500 py-0.5 rounded-full px-1.5 flex items-center justify-center"
-                                                >
+                                    <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50">
+                                        <div className="p-2 md:p-4 rounded-xl relative flex flex-col">
+                                            <div className="flex justify-end items-end mb-2">
+
+                                                <button onClick={() => setOpenId(null)} className="text-xl text-white hover:text-gray-500 border border-white hover:border-gray-500 py-0.5 rounded-full px-1.5 flex items-center justify-center" >
                                                     <i className="bi bi-x-lg"></i>
                                                 </button>
                                             </div>
 
                                             <img
                                                 src={card.modalImage}
-                                                className="w-[300px] md:w-[600px] h-[200px] md:h-[400px] object-contain rounded-lg"
+                                                className="w-[300px] md:w-[800px] h-[200px] md:h-[600px] object-contain rounded-lg"
                                             />
                                         </div>
                                     </div>
@@ -543,14 +552,14 @@ function all() {
                                     <label className="block text-xl mb-2" htmlFor="name">
                                         {t("contactSection.form.nameLabel")}
                                     </label>
-                                    <input type="text" id="name" name="name" placeholder={t("contactSection.form.namePlaceholder")} required className="w-[288px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="text" id="name" name="name" placeholder={t("contactSection.form.namePlaceholder")} required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
 
                                 <div>
                                     <label className="block text-xl mb-2" htmlFor="email">
                                         {t("contactSection.form.emailLabel")}
                                     </label>
-                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[288px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
                             </div>
 
@@ -561,11 +570,16 @@ function all() {
                                 <input type="text" id="company" name="company" placeholder={t("contactSection.form.companyPlaceholder")} className="w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                             </div>
 
+
                             <div>
                                 <label className="block text-xl mb-2" htmlFor="message">
                                     {t("contactSection.form.messageLabel")}
                                 </label>
                                 <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[242px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
+                            </div>
+
+                            <div>
+                                <input type="file" name="file" className="flex items-center display:none w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-3 border border-gray-300 rounded-lg " />
                             </div>
 
                             <button type="submit" className="w-[303px] md:w-[638px] h-[52px] bg-[#0349A7] border-2 border-[#0349A7] hover:text-[#0349A7] text-white py-2 px-4 rounded-lg hover:bg-white transition-colors" >
@@ -617,7 +631,7 @@ function all() {
                                 {t("footer.columns.template.title")}
                             </h1>
                             <a className="hover:text-white cursor-pointer" onClick={() => scrollToSection(homeRef)}>
-                              {t("footer.columns.template.home")}
+                                {t("footer.columns.template.home")}
                             </a>
                             <a className="hover:text-white cursor-pointer" onClick={() => scrollToSection(aboutRef)} >
                                 {t("footer.columns.template.about")}
