@@ -4,6 +4,7 @@ import Layout from "./Companents/Layout";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import All from './Companents/all';
 import Porfolio from './Companents/Porfolio';
+import AboutUs from './Companents/AboutUs';
 import ScrollToTop from "./Companents/ScrollToTop";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<All />} />
           <Route path="portfolio" element={<Porfolio />} />
+          <Route path="aboutus" element={<AboutUs />} />
         </Route>
       </Routes>
    </>

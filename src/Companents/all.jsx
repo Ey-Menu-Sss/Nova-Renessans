@@ -60,43 +60,43 @@ function all() {
         },
         {
             title: "Карточка 2",
-            icon: "/logo/Group.png",
+            icon: "/logo/hugeicons.png",
             description: t("servicesSection.cards.1.title"),
             cardText: t("servicesSection.cards.1.body"),
         },
         {
             title: "Карточка 3",
-            icon: "/logo/Group.png",
+            icon: "/logo/material-symbols_computer-outline-rounded.png",
             description: t("servicesSection.cards.2.title"),
             cardText: t("servicesSection.cards.2.body"),
         },
         {
             title: "Карточка 4",
-            icon: "/logo/Group.png",
+            icon: "/logo/file-c.png",
             description: t("servicesSection.cards.3.title"),
             cardText: t("servicesSection.cards.3.body"),
         },
         {
             title: "Карточка 5",
-            icon: "/logo/Group.png",
+            icon: "/logo/system-code.png",
             description: t("servicesSection.cards.4.title"),
             cardText: t("servicesSection.cards.4.body"),
         },
         {
             title: "Карточка 6",
-            icon: "/logo/Group.png",
+            icon: "/logo/outline.png",
             description: t("servicesSection.cards.5.title"),
             cardText: t("servicesSection.cards.5.body"),
         },
         {
             title: "Карточка 7",
-            icon: "/logo/Group.png",
+            icon: "/logo/tabler.png",
             description: t("servicesSection.cards.6.title"),
             cardText: t("servicesSection.cards.6.body"),
         },
         {
             title: "Карточка 8",
-            icon: "/logo/Group.png",
+            icon: "/logo/monitor-mobile.png",
             description: t("servicesSection.cards.7.title"),
             cardText: t("servicesSection.cards.7.body"),
         },
@@ -131,8 +131,12 @@ function all() {
                                 <img src="/logo/aboutUs.png" className="w-[24px]" />
                                 <h1 className="text-2xl"> {t("aboutSection.badge")}</h1>
                             </button>
+                            
                             <h1 className=" font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">{t("aboutSection.title")}</h1>
                             <p className="text-xl w-[335px] md:w-[600px] lg:w-[800px]">{t("aboutSection.subtitle")}</p>
+                            <Link to="/aboutus" className="rounded-[12px] bg-[#006DFF] hover:bg-white hover:border-2 hover:border-[#5492E4] hover:text-[#5492E4] text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center text-[18px]">
+                            {t("portfolioSection.cta")}
+                        </Link>
                         </div>
 
                         <div className="flex flex-col xl:flex-row items-center justify-center gap-[49px]">
@@ -168,7 +172,6 @@ function all() {
                                     <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
                                         <div className="bg-[#3BCEAC] w-[70px] h-[70px] flex items-center justify-center rounded-full">
                                             <img src="/logo/services4.png" className="w-[32px] h-[27px]" />
-
                                         </div>
                                         <div className="space-y-[8px]">
                                             <h1 className="font-medium text-xl">

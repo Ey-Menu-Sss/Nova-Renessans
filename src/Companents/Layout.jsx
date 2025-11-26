@@ -11,6 +11,14 @@ const CHAT_ID = "-1003257673634";
 function Layout() {
     const { t } = useTranslation();
 
+      const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      // если уже на главной — скроллим вверх
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // если НЕ на главной — переход произойдет через Link
+  };
+
     //header
     const homeRef = useRef(null);
     const aboutRef = useRef(null);
@@ -135,8 +143,14 @@ function Layout() {
             <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300  px-[20px] md:px-0  ${scrolled ? "bg-black/20 backdrop-blur-lg shadow-md" : "bg-transparent"}`}>
 
                 <div className="max-w-[1440px] mx-auto flex justify-between items-center py-4 px-3 2xl:px-0">
-                    <Link to="/"><img src="/logo/tenzorsoft-logo.png" alt="logo" className="w-[94px] h-[60px]" /></Link>
-                    <div className="flex  gap-[58px] items-center">
+  <Link to="/">
+      <img
+        src="/logo/tenzorsoft-logo.png"
+        alt="logo"
+        className="w-[94px] h-[60px] cursor-pointer"
+        onClick={handleLogoClick}
+      />
+    </Link>                    <div className="flex  gap-[58px] items-center">
                         <div className="flex md:gap-[40px] xl:gap-[56px] text-white items-center hidden lg:flex">
                             {[
                                 { label: t("navbar.home"), ref: homeRef },
