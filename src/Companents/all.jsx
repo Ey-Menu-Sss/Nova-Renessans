@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 import Partners from "./partners";
 import { useNavigate } from "react-router-dom";
+import { Certificates } from "./Certificates";
 
-
+const BOT_TOKEN = "8565375529:AAGecSewxKBWrMBUYWwxEukIEuCch7Px5fw";
+const CHAT_ID = "-1003257673634";
 
 function all() {
     const navigate = useNavigate();
@@ -102,293 +104,384 @@ function all() {
         },
     ];
 
-    const { homeRef, aboutRef, certificatesRef, servicesRef, portfolioRef } = useOutletContext();
+    const { homeRef, aboutRef, certificatesRef, servicesRef, contactRef, portfolioRef } = useOutletContext();
+
+    //  отправка к телеграму 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const company = e.target.company.value;
+        const message = e.target.message.value;
+        const file = e.target.file.files[0];
+
+        const text = `
+           📩 *Yangi xabar!*
+           👤 *Ism:* ${name}
+           📧 *Email:* ${email}
+           🏢 *Kompaniya:* ${company}
+           💬 *Xabar:* ${message}
+            `;
+
+        try {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: text,
+                    parse_mode: "Markdown",
+                }),
+            });
+
+            if (file) {
+                const formData = new FormData();
+                formData.append("chat_id", CHAT_ID);
+                formData.append("document", file);
+
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
+                    method: "POST",
+                    body: formData,
+                });
+            }
+
+            alert("✅ Xabaringiz muvaffaqiyatli yuborildi!");
+            e.target.reset();
+        } catch (error) {
+            console.error("Xatolik:", error);
+            alert("❌ Xabar yuborishda xatolik yuz berdi!");
+        }
+    };
+
 
 
     return (
         <div>
 
-            <header className="relative bg-[url('/baground/Hopebg.svg')] bg-cover bg-center h-screen ">
-                <section id="hero" ref={homeRef} className="flex items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0">
-                    <div className="space-y-6">
-                        <h1 className="text-5xl md:text-6xl  font-semibold">  <Trans i18nKey="hero.title" /> </h1>
-                        <p className="text-[20px] md:text-[25px]"> <Trans i18nKey="hero.description" /> </p>
-                        <button className="hover:border-2 hover:border-[#006DFF] bg-[#006DFF] hover:bg-white hover:text-[#006DFF] text-white w-[147px] h-[52px] rounded-xl text-lg">{t("hero.cta")}</button>
+            <header className="bg-[#163133] h-screen ">
+                <section id="hero" ref={homeRef} className="flex justify-between items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0">
+
+                    <div className="space-y-[36px] flex flex-col justify-center items-start">
+                        <h1 className="text-5xl md:text-6xl  font-semibold w-[690px]">  Trusted legal expertise, tailored for your needs  </h1>
+                        <p className="text-[20px] md:text-[25px] w-[710px]"> Our dedicated attorneys provide strategic legal solutions and unwavering representation for individuals </p>
+                        <button className="hover:border-2 hover:border-[#FAD28C] bg-[#FAD28C] hover:bg-white hover:text-[#FAD28C] text-black w-[147px] h-[52px] rounded-full text-[20px]">{t("hero.cta")}</button>
+                        <div className="border-t border-[#FAD28C]/15 w-[700px]"></div>
+                        <div className="flex justify-between w-[468px] gap-[36px] text-[#FAD28C]">
+                            <div className="space-y-[16px] flex flex-col justify-center items-center">
+                                <p className="font-semibold text-[38px]">1000+</p>
+                                <p className="text-[20px]">Clients Served</p>
+                            </div>
+                            <div className="space-y-[16px]  flex flex-col justify-center items-center">
+                                <p className="font-semibold text-[38px]">99.9%</p>
+                                <p className="text-[20px]">Uptime</p>
+                            </div>
+                         
+                            <div className="space-y-[16px]  flex flex-col justify-center items-center">
+                                <p className="font-semibold text-[38px]">24/7</p>
+                                <p className="text-[20px]">Support</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <div className="relative w-[512px] h-[700px] rounded-2xl overflow-visible">
+                    
+                        <img src="/image/HopeImg.png" className="w-full h-full object-cover rounded-2xl" />
+
+                        <div className="absolute left-[-90px] bottom-[60px] bg-white/5 backdrop-blur-md w-[214px] h-[222px]  border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
+                         <div  className="flex flex-col justify-between items-start h-full">
+                               <div className="flex -space-x-2">
+                                <img src="/image/avatar1.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                <img src="/image/avatar2.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                <img src="/image/avatar3.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                            </div>
+                            <div className=" space-y-5">
+                                <p className="text-[49px] font-semibold">150+</p>
+                                <p className="text-[18px] font-medium">Business partners</p>
+                            </div>
+                         </div>
+                        </div>
+                    </div>
+
+
+
+
                 </section>
             </header>
 
             <main className=" ">
 
-                <section id="partners" className="  my-12">
+                <section id="partners" className=" ">
                     <Partners />
                 </section>
 
-                <section ref={aboutRef} id="AboutUs" className=" bg-gradient-to-b from-[#0348A408] to-white flex">
-                    <div className="max-w-[1440px]  mx-auto space-y-[40px] md:space-y-[120px] my-[80px] px-[20px] md:px-2 lg:px-3 2xl:px-0">
-                        <div className="space-y-4 items-center justify-center flex flex-col text-center">
-                            <button className="rounded-full text-[#0349A7] font-medium bg-[#E8F2FF] flex gap-3 w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
-                                <img src="/logo/aboutUs.png" className="w-[24px]" />
-                                <h1 className="text-2xl"> {t("aboutSection.badge")}</h1>
-                            </button>
-                            
-                            <h1 className=" font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">{t("aboutSection.title")}</h1>
-                            <p className="text-xl w-[335px] md:w-[600px] lg:w-[800px]">{t("aboutSection.subtitle")}</p>
-                            <Link to="/aboutus" className="rounded-[12px] bg-[#006DFF] hover:bg-white hover:border-2 hover:border-[#5492E4] hover:text-[#5492E4] text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center text-[18px]">
+                <section ref={aboutRef} id="AboutUs" className="max-w-[1440px]  mx-auto space-y-[40px] md:space-y-[120px] my-[80px] px-[20px] md:px-2 lg:px-3 2xl:px-0 ">
+                    <div className="space-y-4 items-center justify-center flex flex-col text-center">
+                        <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+                            <li className="text-2xl  ml-4 "> {t("aboutSection.badge")}</li>
+                        </button>
+
+                        <h1 className=" font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">{t("aboutSection.title")}</h1>
+                        <p className="text-xl w-[335px] md:w-[600px] lg:w-[800px]">{t("aboutSection.subtitle")}</p>
+                        <Link to="/aboutus" className="rounded-full bg-[#FAD28C] hover:bg-white hover:border-2 hover:border-[#FAD28C] hover:text-[#FAD28C]  flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center text-[18px]">
                             {t("portfolioSection.cta")}
                         </Link>
-                        </div>
+                    </div>
 
-                        <div className="flex flex-col xl:flex-row items-center justify-center gap-[49px]">
+                    <div className="flex flex-col xl:flex-row items-center justify-center gap-[49px]">
 
-                            <img src="/image/AboutUs.png" className="h-[335px] md:h-[687px] w-[335px] md:w-[680px] lg:w-[600px] 2xl:w-[690px] rounded-2xl " />
+                        <div className="flex flex-col justify-between h-[600px]">
+                            <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left">
+                                <div className="hover:bg-[#fcf3e2] hover:rounded-2xl">
+                                    <img src="/icn/eosicn.png" className="w-[54px] h-[54px]" />
 
-                            <div className="space-y-[20px]">
-
-                                <div className="space-y-[12px]">
-                                    <h1 className="font-medium text-center text-4xl">
-                                        {t("aboutSection.whyTitle")}
+                                </div>
+                                <div className="space-y-[8px]  w-[260px]">
+                                    <h1 className="font-medium text-xl">
+                                        {t("aboutSection.features.0.title")}
                                     </h1>
-
-                                    <p className="text-lg text-center w-[335px] sm:w-[360px] md:w-[580px] 2xl:w-[693px]"> {t("aboutSection.whyDescription")}</p>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] lg:gap-[50px] justify-items-center md:justify-items-start">
-
-                                    <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left">
-                                        <div className="bg-[#FBBF0A] w-[70px] h-[70px] flex items-center justify-center rounded-full">
-                                            <img src="/logo/services.png" className="w-[32px] h-[27px]" />
-                                        </div>
-                                        <div className="space-y-[8px]  w-[260px]">
-                                            <h1 className="font-medium text-xl">
-                                                {t("aboutSection.features.0.title")}
-                                            </h1>
-                                            <p className="text-lg">
-                                                {t("aboutSection.features.0.body")}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
-                                        <div className="bg-[#3BCEAC] w-[70px] h-[70px] flex items-center justify-center rounded-full">
-                                            <img src="/logo/services4.png" className="w-[32px] h-[27px]" />
-                                        </div>
-                                        <div className="space-y-[8px]">
-                                            <h1 className="font-medium text-xl">
-                                                <Trans i18nKey="aboutSection.features.1.title">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </h1>
-                                            <p className="text-lg">
-                                                <Trans i18nKey="aboutSection.features.1.body">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
-                                        <div className="bg-[#43A7FC] w-[70px] h-[70px] flex items-center justify-center rounded-full">
-                                            <img src="/logo/services2.png" className="w-[32px] h-[27px]" />
-                                        </div>
-                                        <div className="space-y-[8px]">
-                                            <h1 className="font-medium text-xl">
-                                                <Trans i18nKey="aboutSection.features.2.title">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </h1>
-                                            <p className="text-lg">
-                                                <Trans i18nKey="aboutSection.features.2.body">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
-                                        <div className="bg-[#D1345B] w-[70px] h-[70px] flex items-center justify-center rounded-full">
-                                            <img src="/logo/services3.png" className="w-[32px] h-[27px]" />
-                                        </div>
-                                        <div className="space-y-[8px]">
-                                            <h1 className="font-medium text-xl">
-                                                <Trans i18nKey="aboutSection.features.3.title">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </h1>
-                                            <p className="text-lg">
-                                                <Trans i18nKey="aboutSection.features.3.body">
-                                                    <br className="hidden md:block" />
-                                                </Trans>
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                    <p className="text-lg">
+                                        {t("aboutSection.features.0.body")}
+                                    </p>
                                 </div>
                             </div>
+
+                            <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
+                                <div className="hover:bg-[#fcf3e2] hover:rounded-2xl">
+                                    <img src="/icn/monitorMobi.png" className="w-[54px] h-[54px]" />
+                                </div>                                <div className="space-y-[8px]">
+                                    <h1 className="font-medium text-xl">
+                                        <Trans i18nKey="aboutSection.features.1.title">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </h1>
+                                    <p className="text-lg">
+                                        <Trans i18nKey="aboutSection.features.1.body">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="overflow-hidden rounded-4xl group">
+                            <img src="/image/AboutImg.png" className="h-[335px] md:h-[687px] w-[335px] md:w-[494px] rounded-2xl transition-transform duration-500 group-hover:scale-110" />
+                        </div>
+
+                        <div className="flex flex-col justify-between h-[600px]">
+                            <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
+                                <img src="/icn/calendarTime.png" className="w-[54px] h-[54px]" />
+                                <div className="space-y-[8px]">
+                                    <h1 className="font-medium text-xl">
+                                        <Trans i18nKey="aboutSection.features.2.title">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </h1>
+                                    <p className="text-lg">
+                                        <Trans i18nKey="aboutSection.features.2.body">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
+                                <img src="/icn/mobileBrowser.png" className="w-[54px] h-[54px]" />
+                                <div className="space-y-[8px]">
+                                    <h1 className="font-medium text-xl">
+                                        <Trans i18nKey="aboutSection.features.3.title">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </h1>
+                                    <p className="text-lg">
+                                        <Trans i18nKey="aboutSection.features.3.body">
+                                            <br className="hidden md:block" />
+                                        </Trans>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section ref={servicesRef} id="Services" className=" bg-[#F2F2F2] h-screen">
+                    <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center space-y-[70px] my-[20px]  ">
+                        <div className="space-y-4 items-center justify-center flex flex-col text-center mt-10">
+                            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+                                <li className="text-2xl  ml-4 "> {t("servicesSection.badge")}</li>
+                            </button>
+                            <p className="font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">{t("servicesSection.description")} </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+                            {cardsData.map((card, index) => (
+                                <div key={index} className="relative flex flex-col h-[175px] w-[345px] md:h-[285px] p-[16px] md:p-6 rounded-2xl bg-white border border-white shadow-xl shadow-gray-200 space-y-1 hover:bg-[#F3F8FF]" >
+                                    <div className="absolute -left-[5px] top-[23px] w-[5px] h-[60px] bg-[#579094] rounded-l-2xl"></div>
+                                    <div className="flex gap-4 items-center">
+                                        <span className="flex items-center shrink-0 justify-center w-[60px] h-[60px] rounded-full bg-[#579094]">
+                                            <img src={card.icon} className="w-[34px]" />
+                                        </span>
+                                        <div className="font-semibold text-[20px] text-[#1B2845] block lg:hidden"> {card.description}</div>
+                                    </div>
+                                    <h1 className="mt-2 font-semibold text-2xl text-[#1B2845] hidden lg:block">{card.description}</h1>
+                                    <div className="h-px w-full bg-gradient-to-r from-transparent via-white/90 to-transparent"></div>
+                                    <p className="text-[16px] md:text-lg text-[#8D8D8D]"> {card.cardText}</p>
+                                </div>
+                            ))}
 
                         </div>
                     </div>
                 </section>
 
-                <section ref={servicesRef} id="Services" className=" max-w-[1440px] mx-auto flex flex-col items-center justify-center space-y-[70px] my-[20px] ">
-                    <div className="space-y-4 items-center justify-center flex flex-col text-center">
-                        <button className="rounded-full text-[#0349A7] font-medium bg-[#E8F2FF] flex gap-3 w-[184px] md:w-[202px] h-[50px] md:h-[55px] text-center justify-center items-center">
-                            <i className="bi bi-gear text-2xl"></i>
-                            <h1 className="text-2xl">{t("servicesSection.badge")}</h1>
-                        </button>
-                        <p className="font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">{t("servicesSection.description")} </p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-                        {cardsData.map((card, index) => (
-                            <div key={index} className="relative flex flex-col h-[175px] w-[345px] md:h-[285px] p-[16px] md:p-6 rounded-2xl border border-white shadow-xl shadow-gray-200   space-y-1 hover:bg-[#F3F8FF]">
-                                <div className="flex gap-4 items-center">
-                                    <span className="flex items-center shrink-0 justify-center w-[60px] h-[60px] rounded-full bg-[#006DFF]">
-                                        <img src={card.icon} className="w-[34px]" />
-                                    </span>
-                                    <div className=" font-semibold text-[20px]  text-[#1B2845] block lg:hidden">{card.description}</div>
-                                </div>
-                                <h1 className="mt-2 font-semibold text-2xl text-[#1B2845] hidden lg:block">{card.description}</h1>
-                                <div className="h-px w-full bg-gradient-to-r from-transparent via-white/90 to-transparent"></div>
-                                <p className=" text-[16px] md:text-lg  text-[#8D8D8D]"> {card.cardText} </p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                <section ref={portfolioRef} id="Porfolio" className=" bg-gradient-to-b from-[#0348A408] to-white  mt-[66px] flex items-center">
+                <section ref={portfolioRef} id="Porfolio" className="  mt-[66px] flex items-center">
                     <div className=" max-w-[1440px] mx-auto flex flex-col items-center justify-center my-[20px] md:my-[70px] space-y-2 md:space-y-4 px-[20px] md:px-2 lg:px-3 2xl:px-0">
-                        <button className="rounded-full text-[#0349A7] font-medium bg-[#E8F2FF] flex gap-3 w-[202px] h-[50px] md:h-[55px] text-center justify-center items-center">
-                            <img src="/logo/uil.png" className="w-[20px]" />
-                            <h1 className="text-2xl">{t("portfolioSection.badge")}</h1>
+                        <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+                            <li className="text-2xl  ml-4 ">{t("portfolioSection.badge")}</li>
                         </button>
                         <h1 className="font-semibold text-[24px] md:text-4xl  text-center  md:w-[440px]">{t("portfolioSection.title")}</h1>
                         <p className=" text-center text-[16px] md:text-xl w-[335px] md:w-[700px]">{t("portfolioSection.description")}</p>
-                        <Link to="/portfolio" className="rounded-[12px] bg-[#006DFF] hover:bg-white hover:border-2 hover:border-[#5492E4] hover:text-[#5492E4] text-white flex gap-3 w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center text-[18px]">
+                        <Link to="/portfolio" className="rounded-full bg-[#FAD28C] hover:bg-white hover:border-2 hover:border-[#FAD28C] hover:text-[#FAD28C] flex w-[137px] md:w-[147px] h-[52px] text-center justify-center items-center text-[18px]">
                             {t("portfolioSection.cta")}
                         </Link>
 
-                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                            <a href="https://logistx.uz" target="_blank" rel="noopener noreferrer" className="block">
-                                <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img src="/image/LogistX.png" className="w-[591px] sm:w-[681px] md:w-[695px] h-[200px] sm:h-[295px] md:h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
-                                    </div>
-                                    <div className="flex justify-between items-center m-2">
-                                        <div className="flex flex-col items-start space-y-2">
-                                            <h1 className="font-bold text-2xl">
-                                                {t("portfolioSection.projects.0.title")}
-                                            </h1>
-                                            <p className="text-[#8D8D8D] text-base">
-                                                {t("portfolioSection.projects.0.body")}
-                                            </p>
-                                        </div>
-                                        <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
-                                    </div>
+                        <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                                <div className="overflow-hidden rounded-xl">
+                                    <img src="/image/portfolioone.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
-                            </a>
+                                <div className="flex justify-between items-center m-2">
+                                    <div className="flex flex-col items-start space-y-2">
+                                        <h1 className="font-bold text-[24px]">
+                                            {t("portfolioSection.projects.0.title")}
+                                        </h1>
+                                        <p className="text-[#D7D7D7] text-[20px]">
+                                            Website
+                                        </p>
+                                    </div>
+                                    <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
+                                </div>
+                            </div>
 
-                            <a href="https://bepulgps.uz" target="_blank" rel="noopener noreferrer" className="block">
-                                <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden ">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img src="/image/BepulGPS.png" className="w-[591px] sm:w-[681px]  md:w-[695px] h-[200px] sm:h-[295px] md:h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
-                                    </div>
-                                    <div className="flex justify-between items-center m-2">
-                                        <div className="flex flex-col items-start space-y-2">
-                                            <h1 className="font-bold text-2xl">{t("portfolioSection.projects.1.title")}</h1>
-                                            <p className="text-[#8D8D8D] text-base">{t("portfolioSection.projects.1.body")}</p>
-                                        </div>
-                                        <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
-                                    </div>
+                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                                <div className="overflow-hidden rounded-xl">
+                                    <img src="/image/portfoliotwo.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
-                            </a>
+                                <div className="flex justify-between items-center m-2">
+                                    <div className="flex flex-col items-start space-y-2">
+                                        <h1 className="font-bold text-[24px]">
+                                            {t("portfolioSection.projects.0.title")}
+                                        </h1>
+                                        <p className="text-[#D7D7D7] text-[20px]">
+                                            Website
+                                        </p>
+                                    </div>
+                                    <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
+                                </div>
+                            </div>
 
-                            <a href="https://xmed.uz/" target="_blank" rel="noopener noreferrer" className="block">
-                                <div className="group border border-[#0349A71A] hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden hidden lg:block">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img src="/image/Xmed.png" className="w-[591px] sm:w-[681px]  md:w-[695px] h-[200px] sm:h-[295px] md:h-[364px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
-                                    </div>
-                                    <div className="flex justify-between items-center m-2">
-                                        <div className="flex flex-col items-start space-y-2">
-                                            <h1 className="font-bold text-2xl">{t("portfolioSection.projects.2.title")}</h1>
-                                            <p className="text-[#8D8D8D] text-base">{t("portfolioSection.projects.2.body")}</p>
-                                        </div>
-                                        <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
-                                    </div>
+                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                                <div className="overflow-hidden rounded-xl">
+                                    <img src="/image/portfoliothre.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
-                            </a>
+                                <div className="flex justify-between items-center m-2">
+                                    <div className="flex flex-col items-start space-y-2">
+                                        <h1 className="font-bold text-[24px]">
+                                            {t("portfolioSection.projects.0.title")}
+                                        </h1>
+                                        <p className="text-[#D7D7D7] text-[20px]">
+                                            Website
+                                        </p>
+                                    </div>
+                                    <i className="bi bi-arrow-up-right text-[#8D8D8D] text-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[45deg] group-hover:text-[#0349A7]"></i>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </section>
 
-                <section ref={certificatesRef} id="Certificats" className="max-w-[1440px] mx-auto flex flex-col items-center justify-center space-y-3.5 md:space-y-5 my-[70px] px-[20px] md:px-2 lg:px-3 2xl:px-0">
-                    <button className="rounded-full text-[#0349A7] font-medium bg-[#E8F2FF] flex gap-3 w-[202px]  h-[50px] md:h-[55px] text-center justify-center items-center">
-                        <img src="/logo/phcertificate.png" className="w-[20px]" />
-                        <h1 className="text-2xl">{t("certificateSection.badge")}</h1>
-                    </button>
-                    <h1 className=" font-bold text-[24px] md:text-4xl text-center">{t("certificateSection.title")}</h1>
-                    <p className="text-center text-[16px] md:text-xl w-[295px] md:w-[690px] ">{t("certificateSection.description")}</p>
-                    <div className="flex items-center justify-center">
-                        {/*
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"> */}
-                        {certificates.map((card) => (
-                            <div key={card.id}>
-                                <div onClick={() => setOpenId(card.id)} className="cursor-pointer shadow-lg shadow-gray-300 px-7 py-8 rounded-3xl border border-[#0349A71A] w-[335px] h-[320px] xl:w-[415px] xl:h-[370px] hover:bg-[#F8FBFF]" >
-                                    <div className="space-y-[20px] md:space-y-5">
-                                        <div className="flex justify-between">
-                                            <div className="bg-[#e0ecfb] w-[50px] xl:w-[70px] h-[50px] xl:h-[70px] flex items-center justify-center rounded-xl">
-                                                <img src={card.icon} className="w-[24px] h-[28px]" />
-                                            </div>
-                                            <div className="flex items-center justify-center rounded-full px-3 bg-[#006DFF] text-white text-sm w-[68px] xl:w-[67px] h-[28px] xl:h-[35px]">
-                                                {t(card.badge)}
-                                            </div>
-                                        </div>
+                <section ref={contactRef} id="Contact" className="bg-[#F2F2F2] h-screen flex flex-col justify-center items-center">
+                    <div className="max-w-[1440px] mx-auto flex justify-between w-full ">
+                        <div className="space-y-[70px] flex flex-col justify-between ">
+                            <div className="space-y-[16px] flex flex-col items-start">
+                                <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+                                    <li className="text-2xl  ml-4 ">{t("contactSection.badge")}</li>
+                                </button>
+                                <h1 className="font-semibold text-[24px] w-[650px] md:text-[49px]">Contact us for more information & get started</h1>
+                                <p className="text-[16px] md:text-xl w-[295px] md:w-[660px] ">{t("contactSection.description")}</p>
+                            </div>
 
-                                        <div>
-                                            <h1 className="font-medium text-[20px] xl:text-[28px]">
-                                                {t(card.title)}
-                                            </h1>
-                                            <p className="text-[16px] xl:text-lg text-[#8D8D8D]">
-                                                {t(card.subtitle)}
-                                            </p>
-                                        </div>
+                            <div className="space-y-[16px] flex flex-col items-start justify-start">
+                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                    <img src="/icn/location.png" className="w-[32px]" />
+                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">Tashkent city Mirabad district st. Magtymguly</p>
+                                </div>
+                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                    <img src="/icn/phone.png" className="w-[32px]" />
+                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">+998(75) 556-56-56 +998(75) 556-56-56</p>
+                                </div>
+                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                    <img src="/icn/email.png" className="w-[32px]" />
+                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">contact@techsolution.com</p>
+                                </div>
+                            </div>
+                        </div>
 
-                                        <p className="font-dmsans font-light italic text-[16px] xl:text-[22px]">
-                                            {t(card.focus)}
-                                        </p>
-
-                                        <div className="flex gap-2.5">
-                                            <img src="/logo/certificateSuccess.png" className="w-[24px] h-[24px] mt-0.5" />
-                                            <p className="text-[#8D8D8D] text-[16px] xl:text-xl">{t(card.status)}</p>
-                                        </div>
-                                    </div>
+                        <form onSubmit={handleSubmit} className="w-[335px] md:w-[710px] h-[660px] bg-white rounded-[24px] p-[15px] md:p-[36px] shadow-2xl shadow-gray-200 space-y-6">
+                            <div className="flex flex-col gap-3 md:flex-row">
+                                <div>
+                                    <label className="block text-xl mb-2" htmlFor="name">
+                                        {t("contactSection.form.nameLabel")}
+                                    </label>
+                                    <input type="text" id="name" name="name" placeholder={t("contactSection.form.namePlaceholder")} required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
 
-                                {/* Modal */}
-                                {openId === card.id && (
-                                    <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50">
-                                        <div className="p-2 md:p-4 rounded-xl relative flex flex-col">
-                                            <div className="flex justify-end items-end mb-2">
-
-                                                <button onClick={() => setOpenId(null)} className="text-xl text-white hover:text-gray-500 border border-white hover:border-gray-500 py-0.5 rounded-full px-1.5 flex items-center justify-center" >
-                                                    <i className="bi bi-x-lg"></i>
-                                                </button>
-                                            </div>
-
-                                            <img
-                                                src={card.modalImage}
-                                                className="w-[300px] md:w-[800px] h-[200px] md:h-[600px] object-contain rounded-lg"
-                                            />
-                                        </div>
-                                    </div>
-                                )}
+                                <div>
+                                    <label className="block text-xl mb-2" htmlFor="email">
+                                        {t("contactSection.form.emailLabel")}
+                                    </label>
+                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                </div>
                             </div>
-                        ))}
+
+                            <div>
+                                <label className="block text-xl mb-2" htmlFor="company">
+                                    {t("contactSection.form.companyLabel")}
+                                </label>
+                                <input type="text" id="company" name="company" placeholder={t("contactSection.form.companyPlaceholder")} className="w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                            </div>
+
+                            <div>
+                                <label className="block text-xl mb-2" htmlFor="message">
+                                    {t("contactSection.form.messageLabel")}
+                                </label>
+                                <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[242px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
+                            </div>
+
+                            {/* <div>
+                                <input type="file" name="file" className="flex items-center display:none w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-3 border border-gray-300 rounded-lg " />
+                            </div> */}
+
+                            <button type="submit" className="w-[303px] md:w-[638px] h-[52px] bg-[#579094] border-2 border-[#579094] hover:text-[#579094] text-white py-2 px-4 rounded-full hover:bg-white transition-colors" >
+                                {t("contactSection.submit")}
+                            </button>
+                        </form>
+                    </div>
+                </section>
+
+                <section ref={certificatesRef} id="Certificats" className="  space-y-[60px] md:space-y-5 my-[70px] px-[20px] md:px-2 lg:px-3 2xl:px-0">
+                    <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center  space-y-3.5 mb-[60px]">
+                        <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+                            <li className="text-2xl  ml-4 ">{t("certificateSection.badge")}</li>
+                        </button>
+                        <h1 className=" font-bold text-[24px] md:text-4xl text-center">{t("certificateSection.title")}</h1>
+                        <p className="text-center text-[16px] md:text-xl w-[295px] md:w-[690px] ">{t("certificateSection.description")}</p>
                     </div>
 
+                    <div>
+                        <Certificates />
+                    </div>
                 </section>
 
             </main>
-
         </div>
     );
 }

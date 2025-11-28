@@ -76,7 +76,7 @@ export default function Partners() {
 
   return (
     <section id="partners">
-      <div className="relative overflow-hidden w-full">
+      <div className="relative overflow-hidden w-full h-[122px] bg-[#F2F2F2] flex items-center">
         <div
           ref={sliderRef}
           className="flex gap-[64px] cursor-grab active:cursor-grabbing"
