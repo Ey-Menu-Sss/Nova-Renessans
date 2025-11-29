@@ -7,50 +7,51 @@ import Partners from "./partners";
 import { useNavigate } from "react-router-dom";
 import { Certificates } from "./Certificates";
 
-const BOT_TOKEN = "8565375529:AAGecSewxKBWrMBUYWwxEukIEuCch7Px5fw";
-const CHAT_ID = "-1003257673634";
+const BOT_TOKEN = "8529319150:AAH7QpRm1DBHoL9V8i6d69X3V9UNqsR7tAA";
+const CHAT_ID = "-1003451614735";
 
 function all() {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [openId, setOpenId] = useState(null);
 
-    // кождая карточка сертификата 
-    const certificates = [
-        {
-            id: 0,
-            icon: "/logo/certificate.png",
-            badge: "certificateSection.cards.0.year",
-            title: "certificateSection.cards.0.title",
-            subtitle: "certificateSection.cards.0.subtitle",
-            focus: "certificateSection.cards.0.focus",
-            status: "certificateSection.cards.0.status",
-            modalImage: "/image/tenzor.jpg",
-            modalTitle: "IT Park",
-        },
-        // {
-        //     id: 1,
-        //     icon: "/logo/certificate.png",
-        //     badge: "certificateSection.cards.1.year",
-        //     title: "certificateSection.cards.1.title",
-        //     subtitle: "certificateSection.cards.1.subtitle",
-        //     focus: "certificateSection.cards.1.focus",
-        //     status: "certificateSection.cards.1.status",
-        //     modalImage: "/image//itparkt.jpg",
-        //     modalTitle: "IT Park",
-        // },
-        // {
-        //     id: 2,
-        //     icon: "/logo/certificate.png",
-        //     badge: "certificateSection.cards.2.year",
-        //     title: "certificateSection.cards.2.title",
-        //     subtitle: "certificateSection.cards.2.subtitle",
-        //     focus: "certificateSection.cards.2.focus",
-        //     status: "certificateSection.cards.2.status",
-        //     modalImage: "/image/frontend.jpeg",
-        //     modalTitle: "Frontend Bootcamp",
-        // },
-    ];
+
+
+    //  отправка к телеграму 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const company = e.target.company.value;
+    const message = e.target.message.value;
+
+    const text = `
+       📩 *Yangi xabar!*
+       👤 *Ism:* ${name}
+       📧 *Email:* ${email}
+       🏢 *Kompaniya:* ${company}
+       💬 *Xabar:* ${message}
+    `;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: text,
+                parse_mode: "Markdown",
+            }),
+        });
+
+        alert("✅ Xabaringiz muvaffaqiyatli yuborildi!");
+        e.target.reset();
+    } catch (error) {
+        console.error("Xatolik:", error);
+        alert("❌ Xabar yuborishda xatolik yuz berdi!");
+    }
+};
+
 
     // сервис сексция 
     const cardsData = [
@@ -105,55 +106,6 @@ function all() {
     ];
 
     const { homeRef, aboutRef, certificatesRef, servicesRef, contactRef, portfolioRef } = useOutletContext();
-
-    //  отправка к телеграму 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const company = e.target.company.value;
-        const message = e.target.message.value;
-        const file = e.target.file.files[0];
-
-        const text = `
-           📩 *Yangi xabar!*
-           👤 *Ism:* ${name}
-           📧 *Email:* ${email}
-           🏢 *Kompaniya:* ${company}
-           💬 *Xabar:* ${message}
-            `;
-
-        try {
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: text,
-                    parse_mode: "Markdown",
-                }),
-            });
-
-            if (file) {
-                const formData = new FormData();
-                formData.append("chat_id", CHAT_ID);
-                formData.append("document", file);
-
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendDocument`, {
-                    method: "POST",
-                    body: formData,
-                });
-            }
-
-            alert("✅ Xabaringiz muvaffaqiyatli yuborildi!");
-            e.target.reset();
-        } catch (error) {
-            console.error("Xatolik:", error);
-            alert("❌ Xabar yuborishda xatolik yuz berdi!");
-        }
-    };
-
-
 
     return (
         <div>
@@ -400,7 +352,7 @@ function all() {
                     </div>
                 </section>
 
-                <section ref={contactRef} id="Contact" className="bg-[#F2F2F2]  flex flex-col justify-center items-center">
+                <section ref={contactRef} id="Contact" className="bg-[#F2F2F2] h-[710px] flex flex-col justify-center items-center">
                     <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between md:w-full py-6 space-y-[20px]">
                         <div className="flex flex-col justify-between space-y-[20px] ">
                             <div className="space-y-[16px] flex flex-col items-center md:items-start">
@@ -433,14 +385,14 @@ function all() {
                                     <label className="block text-xl mb-2" htmlFor="name">
                                         {t("contactSection.form.nameLabel")}
                                     </label>
-                                    <input type="text" id="name" name="name" placeholder={t("contactSection.form.namePlaceholder")} required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="text" id="name" name="name" placeholder={t("contactSection.form.namePlaceholder")} required className="w-[303px] md:w-[311px] h-[48px] md:h-[45px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
 
                                 <div>
                                     <label className="block text-xl mb-2" htmlFor="email">
                                         {t("contactSection.form.emailLabel")}
                                     </label>
-                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[303px] md:w-[311px] h-[48px] md:h-[54px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                    <input type="email" id="email" name="email" placeholder="example@mail.com" required className="w-[303px] md:w-[311px] h-[48px] md:h-[45px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                                 </div>
                             </div>
 
@@ -448,14 +400,14 @@ function all() {
                                 <label className="block text-xl mb-2" htmlFor="company">
                                     {t("contactSection.form.companyLabel")}
                                 </label>
-                                <input type="text" id="company" name="company" placeholder={t("contactSection.form.companyPlaceholder")} className="w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                                <input type="text" id="company" name="company" placeholder={t("contactSection.form.companyPlaceholder")} className="w-[303px] md:w-[638px] h-[48px] md:h-[45px]  px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                             </div>
 
                             <div>
                                 <label className="block text-xl mb-2" htmlFor="message">
                                     {t("contactSection.form.messageLabel")}
                                 </label>
-                                <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[200px] md:h-[242px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
+                                <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[200px] md:h-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
                             </div>
 
 
