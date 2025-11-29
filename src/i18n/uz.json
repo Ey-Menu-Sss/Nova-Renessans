@@ -9,9 +9,12 @@
     "readMore": "Batafsil o'qish"
   },
   "hero": {
-    "title": "IT yechimlari <br/> va texnologiyalari",
-    "description": "Biz biznesingizni raqobatchilardan bir qadam oldinda ushlab turishga <br/> yordam beradigan ilg'or IT yechimlari va zamonaviy texnologiyalarni taklif etamiz.",
-    "cta": "Batafsil o'qish"
+    "title": "Sizning ehtiyojlaringizga moslashtirilgan ishonchli yuridik ekspertiza.",
+    "description": "Bizning sodiq advokatlarimiz shaxslar uchun strategik yuridik yechimlar va qat’iy himoya taqdim etadi.",
+    "cta": "Batafsil o'qish",
+    "clients": "Xizmat ko‘rsatilgan mijozlar",
+    "uptime": "Ishlash vaqti",
+    "support": "Qo‘llab-quvvatlash"
   },
   "aboutSection": {
     "badge": "Biz haqimizda",
@@ -135,7 +138,7 @@
 
   "contactSection": {
     "badge": "Bog'lanish",
-    "title": "Keling, suhbatni boshlaymiz",
+    "title": "Batafsil ma’lumot olish va boshlash uchun biz bilan bog‘laning.",
     "description": "Loyihangiz bormi? Sizdan xabar olishdan mamnun bo'lamiz. Xabar qoldiring va biz imkon qadar tez javob beramiz.",
     "form": {
       "nameLabel": "Ismingiz",

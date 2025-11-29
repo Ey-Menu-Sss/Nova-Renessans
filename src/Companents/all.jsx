@@ -158,55 +158,57 @@ function all() {
     return (
         <div>
 
-            <header className="bg-[#163133] h-screen ">
-                <section id="hero" ref={homeRef} className="flex justify-between items-center text-white h-screen pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0">
+            <section id="hero" ref={homeRef} className="bg-[#163133] h-screen">
 
-                    <div className="space-y-[36px] flex flex-col justify-center items-start">
-                        <h1 className="text-5xl md:text-6xl  font-semibold w-[690px]">  Trusted legal expertise, tailored for your needs  </h1>
-                        <p className="text-[20px] md:text-[25px] w-[710px]"> Our dedicated attorneys provide strategic legal solutions and unwavering representation for individuals </p>
-                        <button className="hover:border-2 hover:border-[#FAD28C] bg-[#FAD28C] hover:bg-white hover:text-[#FAD28C] text-black w-[147px] h-[52px] rounded-full text-[20px]">{t("hero.cta")}</button>
-                        <div className="border-t border-[#FAD28C]/15 w-[700px]"></div>
-                        <div className="flex justify-between w-[468px] gap-[36px] text-[#FAD28C]">
+                <div className="relative flex flex-col md:flex-row justify-center md:justify-between space-y-9 items-start md:items-center h-full pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0 text-white bg-[url('/image/HopeImg.png')] bg-cover bg-center bg-no-repeat md:bg-none before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent  before:z-0">
+                    <div className="relative z-10 space-y-[26px] md:space-y-[36px] flex flex-col justify-center items-start">
+                        <h1 className="text-[35px] md:text-[49px] font-semibold w-[375px] md:w-[690px]">{t("hero.title")}</h1>
+                        <p className="text-[20px] md:text-[24px] w-[355px] md:w-[710px]"> {t("hero.description")}</p>
+                        <button className="hover:border-2 hover:border-[#FAD28C] bg-[#FAD28C] hover:bg-white hover:text-[#FAD28C] text-black w-[147px] h-[52px] rounded-full text-[20px]">
+                            {t("hero.cta")}
+                        </button>
+                        <div className="border-t border-[#FAD28C]/15 w-[335px] md:w-[700px]"></div>
+
+                        <div className="flex w-[400px] md:w-[668px] gap-[36px] text-[#FAD28C]">
                             <div className="space-y-[16px] flex flex-col justify-center items-center">
-                                <p className="font-semibold text-[38px]">1000+</p>
-                                <p className="text-[20px]">Clients Served</p>
+                                <p className="font-semibold md:text-[38px] text-[34px]">1000+</p>
+                                <p className="md:text-[20px] text-[15px]">{t("hero.clients")}</p>
                             </div>
-                            <div className="space-y-[16px]  flex flex-col justify-center items-center">
-                                <p className="font-semibold text-[38px]">99.9%</p>
-                                <p className="text-[20px]">Uptime</p>
+
+                            <div className="space-y-[16px] flex flex-col justify-center items-center">
+                                <p className="font-semibold md:text-[38px] text-[34px]">99.9%</p>
+                                <p className="md:text-[20px] text-[15px]">{t("hero.uptime")}</p>
                             </div>
-                         
-                            <div className="space-y-[16px]  flex flex-col justify-center items-center">
-                                <p className="font-semibold text-[38px]">24/7</p>
-                                <p className="text-[20px]">Support</p>
+
+                            <div className="space-y-[16px] flex flex-col justify-center items-center">
+                                <p className="font-semibold md:text-[38px] text-[34px]">24/7</p>
+                                <p className="md:text-[20px] text-[15px]">{t("hero.support")}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="relative w-[512px] h-[700px] rounded-2xl overflow-visible">
-                    
-                        <img src="/image/HopeImg.png" className="w-full h-full object-cover rounded-2xl" />
+                    <div className="relative z-10 md:relative md:w-[512px] md:h-[700px] rounded-2xl md:overflow-visible">
 
-                        <div className="absolute left-[-90px] bottom-[60px] bg-white/5 backdrop-blur-md w-[214px] h-[222px]  border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
-                         <div  className="flex flex-col justify-between items-start h-full">
-                               <div className="flex -space-x-2">
-                                <img src="/image/avatar1.png" className="w-8 h-8 rounded-full border-2 border-white" />
-                                <img src="/image/avatar2.png" className="w-8 h-8 rounded-full border-2 border-white" />
-                                <img src="/image/avatar3.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                        <img src="/image/HopeImg.png" className="hidden md:block w-full h-full object-cover rounded-2xl" />
+
+                        <div className="md:absolute md:left-[-60px] bottom-[60px] bg-white/5 backdrop-blur-md w-[166px] md:w-[214px] h-[147px] md:h-[222px] border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
+                            <div className="flex flex-col justify-between items-start h-full">
+                                <div className="flex -space-x-2">
+                                    <img src="/image/avatar1.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                    <img src="/image/avatar2.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                    <img src="/image/avatar3.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                </div>
+                                <div className="space-y-5">
+                                    <p className="text-[31px] md:text-[49px] font-semibold">150+</p>
+                                    <p className="md:text-[18px] font-medium">Business partners</p>
+                                </div>
                             </div>
-                            <div className=" space-y-5">
-                                <p className="text-[49px] font-semibold">150+</p>
-                                <p className="text-[18px] font-medium">Business partners</p>
-                            </div>
-                         </div>
                         </div>
                     </div>
 
+                </div>
 
-
-
-                </section>
-            </header>
+            </section>
 
             <main className=" ">
 
@@ -214,7 +216,7 @@ function all() {
                     <Partners />
                 </section>
 
-                <section ref={aboutRef} id="AboutUs" className="max-w-[1440px]  mx-auto space-y-[40px] md:space-y-[120px] my-[80px] px-[20px] md:px-2 lg:px-3 2xl:px-0 ">
+                <section ref={aboutRef} id="AboutUs" className="max-w-[1440px]  mx-auto space-y-[40px] my-[80px] px-[20px] md:px-2 lg:px-3 2xl:px-0 ">
                     <div className="space-y-4 items-center justify-center flex flex-col text-center">
                         <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
                             <li className="text-2xl  ml-4 "> {t("aboutSection.badge")}</li>
@@ -229,7 +231,7 @@ function all() {
 
                     <div className="flex flex-col xl:flex-row items-center justify-center gap-[49px]">
 
-                        <div className="flex flex-col justify-between h-[600px]">
+                        <div className="flex flex-col space-y-[30px] md:space-y-0 md:justify-between  md:h-[600px]">
                             <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left">
                                 <div className="hover:bg-[#fcf3e2] hover:rounded-2xl">
                                     <img src="/icn/eosicn.png" className="w-[54px] h-[54px]" />
@@ -264,10 +266,10 @@ function all() {
                         </div>
 
                         <div className="overflow-hidden rounded-4xl group">
-                            <img src="/image/AboutImg.png" className="h-[335px] md:h-[687px] w-[335px] md:w-[494px] rounded-2xl transition-transform duration-500 group-hover:scale-110" />
+                            <img src="/image/AboutImg.png" className="h-[335px] md:h-[627px] w-[335px] md:w-[444px] rounded-2xl transition-transform duration-500 group-hover:scale-110" />
                         </div>
 
-                        <div className="flex flex-col justify-between h-[600px]">
+                        <div className="flex flex-col space-y-[30px] md:space-y-0 md:justify-between md:h-[600px]">
                             <div className="space-y-[12px] flex flex-col items-center md:items-start text-center md:text-left  w-[271px]">
                                 <img src="/icn/calendarTime.png" className="w-[54px] h-[54px]" />
                                 <div className="space-y-[8px]">
@@ -303,7 +305,7 @@ function all() {
                     </div>
                 </section>
 
-                <section ref={servicesRef} id="Services" className=" bg-[#F2F2F2] h-screen">
+                <section ref={servicesRef} id="Services" className=" bg-[#F2F2F2] py-2">
                     <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center space-y-[70px] my-[20px]  ">
                         <div className="space-y-4 items-center justify-center flex flex-col text-center mt-10">
                             <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
@@ -331,7 +333,7 @@ function all() {
                     </div>
                 </section>
 
-                <section ref={portfolioRef} id="Porfolio" className="  mt-[66px] flex items-center">
+                <section ref={portfolioRef} id="Porfolio" className="flex items-center">
                     <div className=" max-w-[1440px] mx-auto flex flex-col items-center justify-center my-[20px] md:my-[70px] space-y-2 md:space-y-4 px-[20px] md:px-2 lg:px-3 2xl:px-0">
                         <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
                             <li className="text-2xl  ml-4 ">{t("portfolioSection.badge")}</li>
@@ -343,9 +345,9 @@ function all() {
                         </Link>
 
                         <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
-                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                            <div className="group w-[335px] md:w-[467px] h-[614px]  md:h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/portfolioone.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/portfolioone.png" className="w-[335px] md:w-[427px] h-[480px] md:h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
@@ -360,9 +362,9 @@ function all() {
                                 </div>
                             </div>
 
-                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                            <div className="group w-[335px] md:w-[467px] h-[614px]  md:h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/portfoliotwo.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/portfoliotwo.png" className="w-[427px] h-[480px] md:h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
@@ -377,9 +379,9 @@ function all() {
                                 </div>
                             </div>
 
-                            <div className="group w-[467px] h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
+                            <div className="group w-[335px] md:w-[467px] h-[614px] md:h-[858px] border border-gray-50 shadow-lg hover:shadow-xl hover:shadow-gray-300 rounded-2xl p-4 bg-white space-y-[20px] overflow-hidden  ">
                                 <div className="overflow-hidden rounded-xl">
-                                    <img src="/image/portfoliothre.png" className="w-[427px] h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
+                                    <img src="/image/portfoliothre.png" className="w-[427px] h-[480px] md:h-[726px] rounded-xl transition-transform duration-500 group-hover:scale-110" />
                                 </div>
                                 <div className="flex justify-between items-center m-2">
                                     <div className="flex flex-col items-start space-y-2">
@@ -398,34 +400,34 @@ function all() {
                     </div>
                 </section>
 
-                <section ref={contactRef} id="Contact" className="bg-[#F2F2F2] h-screen flex flex-col justify-center items-center">
-                    <div className="max-w-[1440px] mx-auto flex justify-between w-full ">
-                        <div className="space-y-[70px] flex flex-col justify-between ">
-                            <div className="space-y-[16px] flex flex-col items-start">
+                <section ref={contactRef} id="Contact" className="bg-[#F2F2F2]  flex flex-col justify-center items-center">
+                    <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between md:w-full py-6 space-y-[20px]">
+                        <div className="flex flex-col justify-between space-y-[20px] ">
+                            <div className="space-y-[16px] flex flex-col items-center md:items-start">
                                 <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
                                     <li className="text-2xl  ml-4 ">{t("contactSection.badge")}</li>
                                 </button>
-                                <h1 className="font-semibold text-[24px] w-[650px] md:text-[49px]">Contact us for more information & get started</h1>
-                                <p className="text-[16px] md:text-xl w-[295px] md:w-[660px] ">{t("contactSection.description")}</p>
+                                <h1 className="font-semibold text-[24px] w-[350px] md:w-[650px] md:text-[49px] text-center md:text-start">{t("contactSection.title")}</h1>
+                                <p className="text-[16px] md:text-xl w-[295px] md:w-[660px] text-center md:text-start">{t("contactSection.description")}</p>
                             </div>
 
                             <div className="space-y-[16px] flex flex-col items-start justify-start">
-                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                <div className="bg-white w-[345px] md:w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
                                     <img src="/icn/location.png" className="w-[32px]" />
-                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">Tashkent city Mirabad district st. Magtymguly</p>
+                                    <p className="text-[#8D8D8D] font-semibold text-[16px] md:text-[26px]">Tashkent city Mirabad district st. Magtymguly</p>
                                 </div>
-                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                <div className="bg-white  w-[345px] md:w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
                                     <img src="/icn/phone.png" className="w-[32px]" />
-                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">+998(75) 556-56-56 +998(75) 556-56-56</p>
+                                    <p className="text-[#8D8D8D] font-semibold text-[16px] md:text-[26px]">+998(75) 556-56-56 +998(75) 556-56-56</p>
                                 </div>
-                                <div className="bg-white w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
+                                <div className="bg-white  w-[345px] md:w-[655px] h-[73px] rounded-[24px] flex justify-start items-center gap-[20px] px-4">
                                     <img src="/icn/email.png" className="w-[32px]" />
-                                    <p className="text-[#8D8D8D] font-semibold text-[26px]">contact@techsolution.com</p>
+                                    <p className="text-[#8D8D8D] font-semibold text-[16px] md:text-[26px]">contact@techsolution.com</p>
                                 </div>
                             </div>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="w-[335px] md:w-[710px] h-[660px] bg-white rounded-[24px] p-[15px] md:p-[36px] shadow-2xl shadow-gray-200 space-y-6">
+                        <form onSubmit={handleSubmit} className="w-[335px] md:w-[710px] h-[660px] bg-white rounded-[24px] p-[20px] md:p-[36px] shadow-2xl shadow-gray-200 space-y-6">
                             <div className="flex flex-col gap-3 md:flex-row">
                                 <div>
                                     <label className="block text-xl mb-2" htmlFor="name">
@@ -453,12 +455,9 @@ function all() {
                                 <label className="block text-xl mb-2" htmlFor="message">
                                     {t("contactSection.form.messageLabel")}
                                 </label>
-                                <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[242px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
+                                <textarea id="message" name="message" placeholder={t("contactSection.form.messagePlaceholder")} rows="4" required className="w-[303px] md:w-[638px] h-[200px] md:h-[242px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" ></textarea>
                             </div>
 
-                            {/* <div>
-                                <input type="file" name="file" className="flex items-center display:none w-[303px] md:w-[638px] h-[48px] md:h-[54px]  px-4 py-3 border border-gray-300 rounded-lg " />
-                            </div> */}
 
                             <button type="submit" className="w-[303px] md:w-[638px] h-[52px] bg-[#579094] border-2 border-[#579094] hover:text-[#579094] text-white py-2 px-4 rounded-full hover:bg-white transition-colors" >
                                 {t("contactSection.submit")}

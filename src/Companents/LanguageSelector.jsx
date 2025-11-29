@@ -18,7 +18,7 @@ export default function LanguageSelector() {
 
     return (
         <>
-            <div className="hidden md:flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm">
+            <div className="md:flex bg-white/5 rounded-full p-1 border border-white/10 backdrop-blur-sm">
                 {languages.map(lang => (
                     <button key={lang.code} onClick={() => selectLang(lang.code)}
                         className={` px-4 py-2 rounded-full font-bold text-sm transition-all duration-300 

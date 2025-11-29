@@ -42,10 +42,10 @@ export const Certificates = () => {
         setIndex((i) => (i === 0 ? certificates.length - perPage : i - 1));
 
     return (
-        <section id="certificates" className=" overflow-hidden">
+        <section id="certificates" className="relative">
 
             <Reveal delay={0.3}>
-                <div className="relative">
+                <div className=" overflow-hidden">
                     <div className="flex transition-transform duration-700 ease-in-out"
                         style={{ transform: `translateX(-${index * (100 / perPage)}%)` }}>
                         {certificates.map((src, i) => (
@@ -65,11 +65,11 @@ export const Certificates = () => {
 
             <Reveal delay={0.4}>
                 <div className="flex items-center justify-center gap-6 mt-12">
-                    <button onClick={prev} className="w-12 h-12 rounded-full flex items-center justify-center text-gray-300 hover:text-brand-blue hover:bg-brand-blue/10 transition" >
+                    <button onClick={prev} className="w-12 h-12 rounded-full flex items-center justify-center text-gray-300 hover:text-black hover:text-brand-blue hover:bg-brand-blue/10 transition" >
                         <ChevronLeft size={40} strokeWidth={1.5} />
                     </button>
 
-                    <button onClick={next} className="w-12 h-12 rounded-full flex items-center justify-center text-gray-300 hover:text-brand-blue hover:bg-brand-blue/10 transition" >
+                    <button onClick={next} className="w-12 h-12 rounded-full flex items-center justify-center text-gray-300 hover:text-black hover:text-brand-blue hover:bg-brand-blue/10 transition" >
                         <ChevronRight size={40} strokeWidth={1.5} />
                     </button>
                 </div>

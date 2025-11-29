@@ -9,9 +9,12 @@
     "readMore": "Read More"
   },
   "hero": {
-    "title": "IT solutions <br/> and technologies",
-    "description": "We offer cutting-edge IT solutions and modern technologies that will <br/> help your business stay one step ahead of the competition.",
-    "cta": "Read More"
+    "title": "Trusted legal expertise, tailored for your needs",
+    "description": "Our dedicated attorneys provide strategic legal solutions and unwavering representation for individuals",
+    "cta": "Read More",
+    "clients": "Clients Served",
+    "uptime": "Uptime",
+    "support": "Support"
   },
   
   "aboutSection": {
@@ -135,7 +138,7 @@
 
   "contactSection": {
     "badge": "Contact",
-    "title": "Let's Start a Conversation",
+    "title": "Contact us for more information & get started ",
     "description": "Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
     "form": {
       "nameLabel": "Your Name",

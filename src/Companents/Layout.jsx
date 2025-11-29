@@ -12,7 +12,7 @@ function Layout() {
 
     const handleLogoClick = () => {
         if (location.pathname === "/") {
-          
+
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     };
@@ -40,7 +40,7 @@ function Layout() {
     const [openIndex, setOpenIndex] = useState(null);
     const [open, setOpen] = useState(false);
 
-  
+
 
     const navigate = useNavigate();
 
@@ -110,6 +110,11 @@ function Layout() {
                     <div className="flex gap-6 items-center">
                         <LanguageSelector />
 
+                        <div className=" lg:hidden flex gap-[30px] justify-center items-center ">
+                            <button className="text-white text-[24px]  " onClick={() => setOpen(!open)}>
+                                {open ? "X" : "☰"}
+                            </button>
+                        </div>
                     </div>
 
                 </div>
@@ -125,7 +130,7 @@ function Layout() {
                     </div>
                 )}
 
-                     <div className="border-t border-[#FAD28C]/15 w-full"></div>
+                <div className="border-t border-[#FAD28C]/15 w-full"></div>
             </nav>
 
             <main className="flex-grow">
@@ -136,32 +141,32 @@ function Layout() {
                 <div className="max-w-[1440px] mx-auto flex flex-col py-[70px] space-y-[80px]  px-[20px] md:px-4 lg:px-3 2xl:px-0">
                     <div className="flex flex-col sm:flex-row sm:justify-between md:items-start gap-3 space-y-6">
                         <div className="flex flex-col space-y-[19px]">
-                            <img src="/logo/tenzorsoft-logo.png" className="w-[94px] h-[60px]" />
+                            <img src="/logo/NovaLogo.png" className="w-[94px] h-[60px]" />
                             <p className="text-xl md:w-[270px] lg:w-[290px] xl:w-[341px]">{t("footer.tagline")}</p>
-                            {/* cылки на сот сети */}
+
                             <div className="flex gap-[17px]">
 
                                 <a href="https://www.youtube.com/@TENZORSOFT-ITCOMPANY" target="_blank" rel="noopener noreferrer" >
                                     <button className="w-[44px] h-[44px] bg-white rounded-[12px] flex items-center justify-center hover:border-2 hover:border-[#FAD28C]">
-                                        <img src="/logo/Facebook.png" className="w-[10px]" />
+                                        <img src="/icn/facebookl.png" className="w-[22px]" />
                                     </button>
                                 </a>
 
                                 <a href="https://www.instagram.com/tenzor_soft/" target="_blank" rel="noopener noreferrer" >
                                     <button className="w-[44px] h-[44px] bg-white rounded-[12px] flex items-center justify-center hover:border-2 hover:border-[#FAD28C]">
-                                        <img src="/logo/instagram.png" className="w-[22px]" />
+                                        <img src="/icn/instagram.png" className="w-[22px]" />
                                     </button>
                                 </a>
 
                                 <a href="https://t.me/tenzor_soft" target="_blank" rel="noopener noreferrer" >
                                     <button className="w-[44px] h-[44px] bg-white rounded-[12px] flex items-center justify-center hover:border-2 hover:border-[#FAD28C]">
-                                        <img src="/logo/telegram.png" className="w-[22px]" />
+                                        <img src="/icn/telegram.png" className="w-[22px]" />
                                     </button>
                                 </a>
 
                                 <a href="https://www.linkedin.com/in/tenzor-soft-396297329/" target="_blank" rel="noopener noreferrer">
                                     <button className="w-[44px] h-[44px] bg-white rounded-[12px] flex items-center justify-center hover:border-2 hover:border-[#FAD28C]">
-                                        <img src="/logo/linkedin.png" className="w-[22px]" />
+                                        <img src="/icn/linkedin.png" className="w-[22px]" />
                                     </button>
                                 </a>
 
@@ -202,8 +207,6 @@ function Layout() {
                             <a href="" className="hover:text-white">{t("footer.columns.services.biometric")}</a>
                             <a href="" className="hover:text-white">{t("footer.columns.services.itservices")}</a>
                         </div>
-
-                    
 
                         <div className="space-y-3">
                             {/* фак */}
