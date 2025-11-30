@@ -162,13 +162,13 @@ function all() {
                         <div className="md:absolute md:left-[-60px] bottom-[60px] bg-white/5 backdrop-blur-md w-[166px] md:w-[214px] h-[147px] md:h-[222px] border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
                             <div className="flex flex-col justify-between items-start h-full">
                                 <div className="flex -space-x-2">
-                                    <img src="/image/avatar1.png" className="w-8 h-8 rounded-full border-2 border-white" />
-                                    <img src="/image/avatar2.png" className="w-8 h-8 rounded-full border-2 border-white" />
-                                    <img src="/image/avatar3.png" className="w-8 h-8 rounded-full border-2 border-white" />
+                                    <img src="/logo/part.svg" className="w-8 h-8 rounded-full border-2 border-white" />
+                                    <img src="/logo/parf.svg" className="w-8 h-8 rounded-full border-2 border-white" />
+                                    <img src="/logo/paro.svg" className="w-8 h-8 rounded-full border-2 border-white" />
                                 </div>
                                 <div className="space-y-5">
                                     <p className="text-[31px] md:text-[49px] font-semibold">150+</p>
-                                    <p className="md:text-[18px] font-medium">Business partners</p>
+                                    <p className="md:text-[18px] w-[148px] font-medium">Business partners</p>
                                 </div>
                             </div>
                         </div>
