@@ -128,7 +128,7 @@ function all() {
 
             <section id="hero" ref={homeRef} className="bg-[#163133] h-screen">
 
-                <div className="relative flex flex-col md:flex-row justify-center md:justify-between space-y-9 items-start md:items-center h-full pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0 text-white bg-[url('/image/HopeImg.png')] bg-cover bg-center bg-no-repeat md:bg-none before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent  before:z-0">
+                <div className="relative flex flex-col md:flex-row justify-center md:justify-between space-y-9 items-start md:items-center h-full pt-[100px] max-w-[1440px] mx-auto px-[20px] md:px-2 lg:px-3 2xl:px-0 text-white bg-[url('/image/HopeImg.webp')] bg-cover bg-center bg-no-repeat md:bg-none before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent  before:z-0">
                     <div className="relative z-10 space-y-[16px] md:space-y-[36px] flex flex-col justify-center items-start">
                         <h1 className="text-[35px] md:[42px] xl:text-[49px] font-semibold w-[359px] md:w-[560px] xl:w-[690px]  leading-[1.1]">{t("hero.title")}</h1>
                         <p className="text-[20px] md:text-[24px] w-[355px] md:w-[610px] xl:w-[710px] leading-[1.2]"> {t("hero.description")}</p>
