@@ -6,6 +6,9 @@ import { Trans } from "react-i18next";
 import Partners from "./partners";
 import { useNavigate } from "react-router-dom";
 import { Certificates } from "./Certificates";
+import CountUp from './additional/CountUp'
+
+
 
 const BOT_TOKEN = "8529319150:AAH7QpRm1DBHoL9V8i6d69X3V9UNqsR7tAA";
 const CHAT_ID = "-1003451614735";
@@ -137,17 +140,27 @@ function all() {
 
                         <div className="flex w-[350px] md:w-[400px] gap-[36px] text-[#FAD28C]">
                             <div className="space-y-[4px] md:space-y-[16px] flex flex-col justify-center items-center">
-                                <p className="font-semibold md:text-[38px] text-[34px]">1000+</p>
+                                <div className="flex items-center">
+                                    <CountUp from={90} to={100} direction="up" duration={1} className="count-up-text font-semibold md:text-[38px] text-[34px]" />
+                                    <span className="font-semibold md:text-[38px] text-[34px]">+</span>
+                                </div>
                                 <p className="md:text-[20px] text-[15px] leading-[1.1]">{t("hero.clients")}</p>
                             </div>
 
                             <div className="space-y-[4px] md:space-y-[16px] flex flex-col justify-center items-center">
-                                <p className="font-semibold md:text-[38px] text-[34px]">99.9%</p>
+                                <div className="flex items-center">
+                                    <CountUp from={98} to={99.9} decimals={1} duration={1.5} className="font-semibold md:text-[38px] text-[34px]" />
+                                    <span className="font-semibold md:text-[38px] text-[34px]">%</span>
+                                </div>
                                 <p className="md:text-[20px] text-[15px] leading-[1.1]">{t("hero.uptime")}</p>
                             </div>
 
                             <div className="space-y-[4px] md:space-y-[16px] flex flex-col justify-center items-center">
-                                <p className="font-semibold xl:text-[38px] text-[34px]">24/7</p>
+                                <div className="flex items-center space-x-2 font-semibold md:text-[38px] text-[34px]">
+                                    <CountUp from={16} to={24} duration={1.5} />
+                                    <span>/</span>
+                                    <CountUp from={6} to={7} duration={1.5} />
+                                </div>
                                 <p className="md:text-[20px] text-[15px] leading-[1.1]">{t("hero.support")}</p>
                             </div>
                         </div>
@@ -165,7 +178,7 @@ function all() {
                                     <img src="/logo/paro.svg" className="w-8 h-8 rounded-full border-2 border-white" />
                                 </div>
                                 <div className="space-y-5">
-                                    <p className="text-[31px] md:text-[49px] font-semibold">150+</p>
+                                    <p className="text-[31px] md:text-[49px] font-semibold">3+</p>
                                     <p className="md:text-[18px] w-[148px] font-medium">Business partners</p>
                                 </div>
                             </div>
@@ -282,6 +295,8 @@ function all() {
                         </div>
                     </div>
                 </section>
+            
+
 
                 <section ref={portfolioRef} id="Porfolio" className="flex items-center">
                     <div className=" max-w-[1440px] mx-auto flex flex-col items-center justify-center my-[20px] md:my-[70px] space-y-2 md:space-y-4 px-[10px] md:px-2 lg:px-3 2xl:px-0">
@@ -437,7 +452,7 @@ function all() {
                         <Certificates />
                     </div>
                 </section>
-                            
+
             </main>
         </div>
     );
