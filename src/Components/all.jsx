@@ -191,11 +191,10 @@ export default function All() {
 
         <section
           ref={aboutRef}
-          id="AboutUs"
-          className="max-w-[1440px]  mx-auto space-y-[40px] my-[80px] px-[20px] md:px-4 lg:px-3 2xl:px-0 "
+          id="AboutUs"          className="max-w-[1440px]  mx-auto space-y-[40px] my-[80px] px-[20px] md:px-4 lg:px-3 2xl:px-0 "
         >
           <div className="space-y-4 items-center justify-center flex flex-col text-center">
-            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+            <button className="rounded-full text-[#579094] font-medium border border-[#579094]  px-6 py-3 md:h-[55px] text-center justify-center items-center">
               <li className="text-2xl  ml-4 "> {t("aboutSection.badge")}</li>
             </button>
 
@@ -287,15 +286,15 @@ export default function All() {
         </section>
 
         <section ref={servicesRef} id="Services" className=" bg-[#F2F2F2] py-2">
-          <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center space-y-[70px] my-[40px]  ">
+          <div className="max-w-[1300px] mx-auto flex flex-col items-center justify-center space-y-[70px] my-[40px] p-4 ">
             <div className="space-y-4 items-center justify-center flex flex-col text-center ">
-              <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+              <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex px-6 py-3 text-center justify-center items-center">
                 <li className="text-2xl  ml-4 ">
                   {" "}
                   {t("servicesSection.badge")}
                 </li>
               </button>
-              <p className="font-semibold text-[28px] md:text-4xl w-[335px] md:w-[560px]">
+              <p className="font-semibold text-[28px] md:text-4xl w-full md:w-[560px]">
                 {t("servicesSection.description")}{" "}
               </p>
             </div>
@@ -305,7 +304,7 @@ export default function All() {
 
         <section ref={portfolioRef} id="Porfolio" className="flex items-center">
           <div className=" max-w-[1300px] mx-auto flex flex-col items-center justify-center my-[20px] md:my-[70px] space-y-2 md:space-y-4 px-[10px] md:px-2 lg:px-3 2xl:px-0">
-            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex px-6 py-3 text-center justify-center items-center">
               <li className="text-2xl  ml-4 ">{t("portfolioSection.badge")}</li>
             </button>
             <h1 className="font-semibold text-[24px] md:text-4xl  text-center  md:w-[440px]">
@@ -502,7 +501,7 @@ export default function All() {
           className="  space-y-[60px] md:space-y-5 my-[70px] px-[20px] md:px-2 lg:px-3 2xl:px-0"
         >
           <div className="max-w-[1440px] mx-auto flex flex-col items-center justify-center  space-y-3.5 mb-[60px]">
-            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex w-[220px] h-[50px] md:h-[55px] text-center justify-center items-center">
+            <button className="rounded-full text-[#579094] font-medium border border-[#579094] flex px-6 py-3 text-center justify-center items-center">
               <li className="text-2xl  ml-4 ">
                 {t("certificateSection.badge")}
               </li>
