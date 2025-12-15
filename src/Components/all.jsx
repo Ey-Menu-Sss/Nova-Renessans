@@ -154,7 +154,7 @@ export default function All() {
           <div className="relative z-10 md:relative md:w-[512px] md:h-[700px] rounded-2xl md:overflow-visible">
             <img
               src="/image/HopeImg.webp"
-              className="hidden md:block w-full h-[550px] md:h-[660px] xl:h-[670px]  object-cover rounded-4xl"
+              className="hidden md:block w-full h-[550px] md:h-[600px] xl:h-[620px] object-cover rounded-4xl"
             />
 
             <div className="md:absolute md:left-[-100px] bottom-[105px] bg-white/5 backdrop-blur-md border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
