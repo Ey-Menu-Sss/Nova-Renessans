@@ -9,7 +9,7 @@
     "readMore": "Batafsil o'qish"
   },
   "hero": {
-    "title": "Sizning ehtiyojlaringizga moslashtirilgan ishonchli yuridik ekspertiza.",
+    "title": "Sizning ehtiyojlaringizga mos ishonchli yuridik xizmatlar.",
     "description": "Bizning sodiq advokatlarimiz shaxslar uchun strategik yuridik yechimlar va qat’iy himoya taqdim etadi.",
     "cta": "Batafsil o'qish",
     "clients": "Mijozlar",
@@ -18,8 +18,8 @@
   },
   "aboutSection": {
     "badge": "Biz haqimizda",
-    "title": "Biz ilhomli va ijodkor onglardan iborat jamoa yaratyapmiz",
-    "subtitle": "Tenzor Soft LLC 2008 yildan beri O'zbekistonda IT xizmatlari bozorida faoliyat yuritayotgan yetakchi dasturiy ta'minot ishlab chiqaruvchisidir. 15 yildan ortiq vaqt davomida biz ishonchli raqamli yechimlar yaratib kelmoqdamiz.",
+    "title": "Biz ilhomlantiruvchi ijodkorlar jamoasini yaratmoqdamiz",
+    "subtitle": "NovaRenessans O'zbekistonda IT xizmatlari bozorida faoliyat yuritayotgan yetakchi dasturiy ta'minot ishlab chiqaruvchisidir. Biz ishonchli raqamli yechimlar yaratib kelmoqdamiz.",
     "whyTitle": "Nega aynan biz?",
     "whyDescription": "IT sohasidagi 15 yildan ortiq tajribamiz tufayli biz innovatsion yechimlarni izlayotgan bizneslar uchun ishonchli hamkor bo'ldik. Mutaxassislarimizning bilim va qarashlari murakkab vazifalarni ham hal etishga yordam beradi.",
     "features": [
@@ -153,7 +153,7 @@
     "submit": "Yuborish"
   },
   "footer": {
-    "tagline": "2008 yildan beri innovatsion texnologik yechimlar orqali bizneslarni o'zgartirib kelamiz.",
+    "tagline": "Biz innovatsion texnologik yechimlar yordamida bizneslarni rivojlantirib kelmoqdamiz",
     "columns": {
       "template": {
         "title": "Shablon",

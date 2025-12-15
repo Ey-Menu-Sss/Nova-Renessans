@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 export const Reveal = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);

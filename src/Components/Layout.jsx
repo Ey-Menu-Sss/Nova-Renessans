@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "../contexts/ThemeProvider";
 
 function Layout() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -17,6 +19,7 @@ function Layout() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { darkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -26,11 +29,6 @@ function Layout() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollTo = (ref) => {
-    setOpen(false);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const handleLogoClick = () => {
     if (location.pathname === "/") {
@@ -75,9 +73,12 @@ function Layout() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300  px-[20px] md:px-0  ${
-          scrolled ? "bg-black/20 backdrop-blur-lg shadow-md" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 px-[20px] md:px-0
+    ${
+      scrolled
+        ? "bg-white/70 dark:bg-black/20 backdrop-blur-lg shadow-md"
+        : "bg-transparent"
+    }`}
       >
         <div className="max-w-[1440px] mx-auto flex justify-between items-center py-4 px-3 2xl:px-0">
           <Link to="/">
@@ -90,58 +91,108 @@ function Layout() {
           </Link>
 
           <div className="flex gap-12">
-            <div className="md:gap-[40px] xl:gap-[56px] text-white items-center hidden lg:flex">
-            {[
-              { label: t("navbar.home"), ref: homeRef },
-              { label: t("navbar.about"), ref: aboutRef },
-              { label: t("navbar.services"), ref: servicesRef },
-              { label: t("navbar.portfolio"), ref: portfolioRef },
-              { label: t("navbar.certificates"), ref: certificatesRef },
-              { label: t("navbar.contact"), ref: contactRef },
-            ].map((item, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToSection(item.ref)}
-                className="relative text-[18px] cursor-pointer px-1after:content-[''] after:block after:h-[2px] after:w-full after:bg-white after:absolute after:left-0 after:bottom-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-500 after:ease-in-out hover:after:scale-x-100"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex gap-6 items-center">
-            <LanguageSelector />
-
-            <div className=" lg:hidden flex gap-[30px] justify-center items-center ">
-              <button
-                className="text-white text-[24px]  "
-                onClick={() => setOpen(!open)}
-              >
-                {open ? "X" : "☰"}
-              </button>
+            <div className="md:gap-[40px] xl:gap-[56px] text-black dark:text-white items-center hidden lg:flex">
+              {[
+                { label: t("navbar.home"), ref: homeRef },
+                { label: t("navbar.about"), ref: aboutRef },
+                { label: t("navbar.services"), ref: servicesRef },
+                { label: t("navbar.portfolio"), ref: portfolioRef },
+                { label: t("navbar.certificates"), ref: certificatesRef },
+                { label: t("navbar.contact"), ref: contactRef },
+              ].map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToSection(item.ref)}
+                  className="relative text-[18px] px-1
+              after:content-[''] after:block after:h-[2px] after:w-full
+              after:bg-current after:absolute after:left-0 after:bottom-0
+              after:scale-x-0 after:origin-center after:transition-transform
+              after:duration-500 hover:after:scale-x-100"
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
-          </div>
+
+            <div className="flex gap-6 items-center">
+              <LanguageSelector />
+
+              {/* Dark / Light Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="relative w-11 h-11 rounded-full flex items-center justify-center
+                 bg-black/10 dark:bg-white/10 cursor-pointer
+                 hover:scale-110 transition-all duration-300
+                 overflow-hidden"
+              >
+                {/* Sun */}
+                <Sun
+                  className={`absolute w-5 h-5 text-yellow-400 transition-all duration-500
+                  ${
+                    // show sun when NOT in dark mode
+                    darkMode
+                      ? "scale-0 rotate-90 opacity-0"
+                      : "scale-100 rotate-0 opacity-100"
+                  }`}
+                />
+                {/* Moon */}
+                <Moon
+                  className={`absolute w-5 h-5 text-blue-300 transition-all duration-500
+                  ${
+                    // show moon when in dark mode
+                    darkMode
+                      ? "scale-100 rotate-0 opacity-100"
+                      : "scale-0 -rotate-90 opacity-0"
+                  }`}
+                />
+              </button>
+
+              <div className="lg:hidden flex gap-[30px] justify-center items-center">
+                <button
+                  className="text-black dark:text-white text-[24px]"
+                  onClick={() => setOpen(!open)}
+                >
+                  {open ? "X" : "☰"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         {open && (
-          <div className="lg:hidden bg-black/60 backdrop-blur-lg text-white text-[18px] px-4 py-4 space-y-4 rounded-xl mx-2">
-            <button onClick={() => scrollTo(homeRef)} className="block">
+          <div
+            className="lg:hidden bg-white/80 dark:bg-black/60 backdrop-blur-lg
+        text-black dark:text-white text-[18px]
+        px-4 py-4 space-y-4 rounded-xl mx-2"
+          >
+            <button onClick={() => scrollToSection(homeRef)} className="block">
               {t("navbar.home")}
             </button>
-            <button onClick={() => scrollTo(aboutRef)} className="block">
+            <button onClick={() => scrollToSection(aboutRef)} className="block">
               {t("navbar.about")}
             </button>
-            <button onClick={() => scrollTo(servicesRef)} className="block">
+            <button
+              onClick={() => scrollToSection(servicesRef)}
+              className="block"
+            >
               {t("navbar.services")}
             </button>
-            <button onClick={() => scrollTo(portfolioRef)} className="block">
+            <button
+              onClick={() => scrollToSection(portfolioRef)}
+              className="block"
+            >
               {t("navbar.portfolio")}
             </button>
-            <button onClick={() => scrollTo(certificatesRef)} className="block">
+            <button
+              onClick={() => scrollToSection(certificatesRef)}
+              className="block"
+            >
               {t("navbar.certificates")}
             </button>
-            <button onClick={() => scrollTo(contactRef)} className="block">
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="block"
+            >
               {t("navbar.contact")}
             </button>
           </div>
@@ -149,79 +200,6 @@ function Layout() {
 
         <div className="border-t border-[#FAD28C]/15 w-full"></div>
       </nav>
-      {/* <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300  px-[20px] md:px-0  ${
-          scrolled ? "bg-black/20 backdrop-blur-lg shadow-md" : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-[1440px] mx-auto flex justify-between items-center py-4 px-3 2xl:px-0">
-          <Link to="/">
-            <img
-              src="/logo/NovaLogo.png"
-              alt="logo"
-              className="w-[89px] h-[58px] cursor-pointer"
-              onClick={handleLogoClick}
-            />
-          </Link>
-
-          <div className="flex md:gap-[40px] xl:gap-[56px] text-white items-center hidden lg:flex">
-            {[
-              { label: t("navbar.home"), ref: homeRef },
-              { label: t("navbar.about"), ref: aboutRef },
-              { label: t("navbar.services"), ref: servicesRef },
-              { label: t("navbar.portfolio"), ref: portfolioRef },
-              { label: t("navbar.certificates"), ref: certificatesRef },
-              { label: t("navbar.contact"), ref: contactRef },
-            ].map((item, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToSection(item.ref)}
-                className="relative text-[18px] cursor-pointer px-1after:content-[''] after:block after:h-[2px] after:w-full after:bg-white after:absolute after:left-0 after:bottom-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-500 after:ease-in-out hover:after:scale-x-100"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex gap-6 items-center">
-            <LanguageSelector />
-
-            <div className=" lg:hidden flex gap-[30px] justify-center items-center ">
-              <button
-                className="text-white text-[24px]  "
-                onClick={() => setOpen(!open)}
-              >
-                {open ? "X" : "☰"}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {open && (
-          <div className="lg:hidden bg-black/60 backdrop-blur-lg text-white text-[18px] px-4 py-4 space-y-4 rounded-xl mx-2">
-            <button onClick={() => scrollTo(homeRef)} className="block">
-              {t("navbar.home")}
-            </button>
-            <button onClick={() => scrollTo(aboutRef)} className="block">
-              {t("navbar.about")}
-            </button>
-            <button onClick={() => scrollTo(servicesRef)} className="block">
-              {t("navbar.services")}
-            </button>
-            <button onClick={() => scrollTo(portfolioRef)} className="block">
-              {t("navbar.portfolio")}
-            </button>
-            <button onClick={() => scrollTo(certificatesRef)} className="block">
-              {t("navbar.certificates")}
-            </button>
-            <button onClick={() => scrollTo(contactRef)} className="block">
-              {t("navbar.contact")}
-            </button>
-          </div>
-        )}
-
-        <div className="border-t border-[#FAD28C]/15 w-full"></div>
-      </nav> */}
 
       <main className="flex-grow">
         <Outlet

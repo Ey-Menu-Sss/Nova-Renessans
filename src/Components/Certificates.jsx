@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-// import { useLanguage } from "../contexts/LanguageContext";
 import { Reveal } from "./additional/revial";
 
 export const Certificates = () => {
-    // const { t } = useLanguage();
     const [index, setIndex] = useState(0);
     const [perPage, setPerPage] = useState(4);
 

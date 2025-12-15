@@ -1,7 +1,10 @@
 import { useTranslation } from "react-i18next";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function CardsData() {
   const { t } = useTranslation();
+  
+    const { darkMode } = useTheme();
   const cardsData = [
     {
       title: "Карточка 1",
@@ -57,7 +60,7 @@ export default function CardsData() {
       {cardsData?.map((card, index) => (
         <div
           key={index}
-          className="relative flex flex-col h-[175px] w-full md:h-[285px] p-[16px] md:p-6 rounded-2xl bg-white border border-white shadow-xl shadow-gray-200 space-y-1 hover:bg-[#F3F8FF]"
+          className={`relative flex flex-col h-[175px] w-full md:h-[285px] p-[16px] md:p-6 rounded-2xl bg-white border ${!darkMode && 'shadow-xl shadow-gray-200'} border-white  space-y-1 hover:bg-[#F3F8FF]`}
         >
           <div className="absolute -left-[5px] top-[23px] w-[5px] h-[60px] bg-[#579094] rounded-l-2xl"></div>
           <div className="flex gap-4 items-center">

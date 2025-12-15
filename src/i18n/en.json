@@ -9,7 +9,7 @@
     "readMore": "Read More"
   },
   "hero": {
-    "title": "Trusted legal expertise, tailored for your needs",
+    "title": "Reliable legal services tailored to your needs.",
     "description": "Our dedicated attorneys provide strategic legal solutions and unwavering representation for individuals",
     "cta": "Read More",
     "clients": "Clients Served",
@@ -19,8 +19,8 @@
   
   "aboutSection": {
     "badge": "About Us",
-    "title": "We Create Bunch Of Enthusiastic & Creative Minds",
-    "subtitle": "Tenzor Soft LLC is a leading software developer in Uzbekistan, operating in the IT services market since 2008. For over 15 years, we have been delivering reliable digital solutions.",
+    "title": "We are creating a team of inspiring creatives",
+    "subtitle": "NovaRenessans is a leading software developer operating in the IT services market in Uzbekistan. We have been creating reliable digital solutions.",
     "whyTitle": "Why Choose Us?",
     "whyDescription": "With over 15 years of experience  in the IT industry, we've established ourselves as a trusted partner for businesses seeking innovative solutions. Our team of experts brings together diverse skills and perspectives to tackle even the most complex challenges.",
     "features": [
@@ -154,7 +154,7 @@
   },
   
   "footer": {
-    "tagline": "Transforming businesses through innovative technology solutions since 2008.",
+    "tagline": "We transform businesses through innovative technological solutions.",
     "columns": {
       "template": {
         "title": "Template",

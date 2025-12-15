@@ -1,16 +1,14 @@
-import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-export default defineConfig({
+/** @type {import('tailwindcss').Config} */
+
+export default {
+  darkMode: "class",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        dmsans: ['"DM Sans"', 'sans-serif'],
+        dmsans: ['"DM Sans"', "sans-serif"],
       },
     },
   },
-  plugins: [tailwindcss(),],
-})
-
-
-
-
+  plugins: [],
+};

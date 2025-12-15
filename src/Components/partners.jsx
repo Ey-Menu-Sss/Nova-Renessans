@@ -1,6 +1,5 @@
-import { img } from 'framer-motion/client';
+import { useTheme } from '../contexts/ThemeProvider';
 import LogoLoop from './additional/LogoLoop';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
 const techLogos = [
   { node: <img src="https://framerusercontent.com/images/wKjhKn5qbcV59TKaJPl4nD1VE.png"  className="w-[80px] h-[35px]" /> },
@@ -11,8 +10,10 @@ const techLogos = [
 
 
 function Partners() {
+  
+        const { darkMode } = useTheme();
   return (
-    <div  className='h-[110px] relative overflow-hidden py-[20px] bg-[#F2F2F2]'>
+    <div  className={`h-[110px] relative overflow-hidden py-[20px] ${darkMode ? 'bg-gray-700' : 'bg-[#F2F2F2]'}  transition-colors duration-500`}>
       <LogoLoop logos={techLogos} speed={120} direction="left" logoHeight={48} gap={40} hoverSpeed={0} scaleOnHover fadeOut fadeOutColor="#F2F2F2" ariaLabel="Technology partners"/>
     </div>
   );
