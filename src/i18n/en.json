@@ -1,0 +1,223 @@
+{
+    "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "certificates": "Certificates",
+    "contact": "Contact",
+    "readMore": "Read More"
+  },
+  "hero": {
+    "title": "Reliable legal services tailored to your needs.",
+    "description": "Our dedicated attorneys provide strategic legal solutions and unwavering representation for individuals",
+    "cta": "Read More",
+    "clients": "Clients Served",
+    "uptime": "Uptime",
+    "support": "Support"
+  },
+  
+  "aboutSection": {
+    "badge": "About Us",
+    "title": "We are creating a team of inspiring creatives",
+    "subtitle": "NovaRenessans is a leading software developer operating in the IT services market in Uzbekistan. We have been creating reliable digital solutions.",
+    "whyTitle": "Why Choose Us?",
+    "whyDescription": "With over 15 years of experience  in the IT industry, we've established ourselves as a trusted partner for businesses seeking innovative solutions. Our team of experts brings together diverse skills and perspectives to tackle even the most complex challenges.",
+    "features": [
+      {
+        "title": "Effective project  management",
+        "body": "Full support of projects using modern methodologies and proven practices."
+      },
+      {
+        "title": "Cross-platform and   responsive design",
+        "body": "We create designs that look  flawless on any device."
+      },
+      {
+        "title": "Monitoring and time  tracking",
+        "body": "Accurate solutions for time   tracking and productivity improvement."
+      },
+      {
+        "title": "Creating innovative mobile applications",
+        "body": "We develop custom mobile solutions that stand out in the market."
+      }
+    ]
+  },
+
+  "servicesSection": {
+    "badge": "Services",
+    "description": "Providing strategic and effective legal solutions for you",
+    "cards": [
+      {
+        "title": "Software development",
+        "body": "Web development (creation of websites, web applications)"
+      },
+      {
+        "title": "Artificial intelligence and machine learning",
+        "body": "Development of intelligent systems and algorithms."
+      },
+      {
+        "title": "1C Products",
+        "body": "1C Products: Integrated Business Management Solutions"
+      },
+      {
+        "title": "1C Bitrix",
+        "body": "1C-Bitrix: development, integration and configuration"
+      },
+      {
+        "title": "Antiviruses",
+        "body": "Professional protection for your business and home"
+      },
+      {
+        "title": "IT Services",
+        "body": "IT services: Setting up and maintaining servers, corporate networks, and Wi-Fi zones"
+      },
+      {
+        "title": "Automation",
+        "body": "Business Process Automation: Optimization through Advanced Technologies"
+      },
+      {
+        "title": "Biometric systems",
+        "body": "Biometric Systems and Artificial Intelligence"
+      }
+    ]
+  },
+
+  "portfolioSection": {
+    "badge": "Portfolio",
+    "title": "Explore Our Most Remarkable Projects.",
+    "description": "We craft customized solutions that empower both startups and established brands, driving success and delivering real impact.",
+    "cta": "Read more",
+    "projects": [
+      {
+        "title": "LogistX",
+        "body": "Meet our most experienced and reliable drivers who are ready to process your cargo."
+      },
+      {
+        "title": "BepulGPS",
+        "body": "Track your trucks in real time and simplify the delivery process."
+      },
+      {
+        "title": "XMed",
+        "body": "XMed is an online doctor appointment system that allows you to receive medical advice without leaving your home."
+      }
+    ]
+  },
+"certificateSection": {
+  "badge": "Certificats",
+  "title": "Industry Recognition",
+  "description": "Our commitment to excellence is validated by industry-leading certifications and partnerships",
+
+  "cards": [
+    {
+      "title": "TENZOR SOFT",
+      "subtitle": "IT PRAK",
+      "focus": "Officially recognized as an IT Park resident",
+      "status": "Verified",
+     "modalTitle" : "IT PRAK",
+      "year": "2021"
+    },
+    {
+      "title": "NOVA RENESSANS",
+      "subtitle": "IT PRAK",
+      "focus": "Officially recognized as an IT Park resident",
+      "status": "Completed",
+      "modalTitle" : "IT PRAK",
+      "year": "2025"
+    },
+    {
+      "title": "Frontend Bootcamp",
+      "subtitle": "Programming Academy",
+      "focus": "React, UI/UX, Modern Web Technologies",
+      "status": "Verified",
+      "modalTitle" : "IT PRAK",
+      "year": "2024"
+    }
+  ]
+},
+
+
+  "contactSection": {
+    "badge": "Contact",
+    "title": "Contact us for more information & get started ",
+    "description": "Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "form": {
+      "nameLabel": "Your Name",
+      "namePlaceholder": "Name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "example@mail.com",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Company name",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your project"
+    },
+    "submit": "Send"
+  },
+  
+  "footer": {
+    "tagline": "We transform businesses through innovative technological solutions.",
+    "columns": {
+      "template": {
+        "title": "Template",
+          "home": "Home",
+          "about": "About Us",
+          "services": "Services",
+          "portfolio": "Portfolio",
+          "certificates": "Certificates",
+          "contact": "Contact"
+      },
+      "services": {
+        "title": "Services",
+          "software": "Software development",
+          "1cProduction": "1C Production",
+          "bitrix": "1C Bitrix",
+          "antivirus": "Antivirus solutions",
+          "automation": "Automation",
+          "biometric": "Biometric systems",
+          "itservices": "IT Services"
+      },
+      "contact": {
+        "title": "Contact",
+        "address": "Tashkent city Mirabad district st. Magtymguly",
+        "phone": "+998(75) 556-56-56",
+        "email": "contact@techsolution.com"
+      }
+    },
+    "subscribeHeading": "Subscribe From",
+    "subscribePlaceholder": "Enter Your Email...",
+    "subscribeCta": "Subscribe",
+    "rights": "© 2024 TechSolutions. All rights reserved.",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
+  },
+
+  "faq": {
+     "item1":{
+        "question": "Template",
+          "home": "Home",
+          "about": "About Us",
+          "services": "Services",
+          "portfolio": "Portfolio",
+          "certificates": "Certificates",
+          "contaёct": "Contact"
+      },
+
+     "item2":{
+        "question": "Services",
+          "software": "Software development",
+          "1cProduction": "1C Production",
+          "bitrix": "1C Bitrix",
+          "antivirus": "Antivirus solutions",
+          "automation": "Automation",
+          "biometric": "Biometric systems",
+          "itservices": "IT Services"
+      },
+
+      "item3":{
+        "question": "Contact",
+          "address": "Tashkent city, Mirabad district, Magtymguly street",
+          "phone": "++998 95 460 10 10",
+          "email": "info@tenzorsoft.com"
+      }
+    
+  }
+}
