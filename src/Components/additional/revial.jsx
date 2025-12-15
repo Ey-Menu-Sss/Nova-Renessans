@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Reveal = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -8,7 +8,7 @@ export const Reveal = ({ children, className = "", delay = 0 }) => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        observer.disconnect(); // Анимация срабатывает один раз
+        observer.disconnect();
       }
     }, { threshold: 0.15 });
 

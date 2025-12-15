@@ -79,6 +79,7 @@
       }
     ]
   },
+
   "portfolioSection": {
     "badge": "Portfolio",
     "title": "Eng ajoyib loyihalarimizni kashf eting.",
@@ -99,7 +100,6 @@
       }
     ]
   },
-
 
 "certificateSection": {
   "badge": "Sertifikatlar",
