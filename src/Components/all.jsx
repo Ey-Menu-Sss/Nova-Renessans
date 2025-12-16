@@ -117,6 +117,7 @@ export default function All() {
                 </div>
                 <p className="md:text-[20px] text-[15px] leading-[1.1]">
                   {t("hero.clients")}
+                  
                 </p>
               </div>
 

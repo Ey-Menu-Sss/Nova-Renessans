@@ -8,7 +8,6 @@ export default function LanguageSelector() {
     { code: "ru", label: "RU" },
     { code: "en", label: "EN" },
   ];
-  
 
   const activeIndex = languages.findIndex((l) => l.code === i18n.language);
 
@@ -32,13 +31,11 @@ export default function LanguageSelector() {
             key={lang.code}
             onClick={() => i18n.changeLanguage(lang.code)}
             className={`relative z-10 px-4 py-2 max-w-[50px] text-sm font-bold rounded-full cursor-pointer
-              ${isActive
-                ? "text-[#0F1A1A]"
-                : "text-gray-200 hover:text-white"
-              }
+              ${isActive ? "text-[#0F1A1A]" : "text-gray-200 hover:text-white"}
             `}
           >
             {lang.label}
+            {/**asdafd */}
           </button>
         );
       })}
