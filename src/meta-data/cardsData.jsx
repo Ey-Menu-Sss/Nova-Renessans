@@ -3,8 +3,8 @@ import { useTheme } from "../contexts/ThemeProvider";
 
 export default function CardsData() {
   const { t } = useTranslation();
-  
-    const { darkMode } = useTheme();
+
+  const { darkMode } = useTheme();
   const cardsData = [
     {
       title: "Карточка 1",
@@ -60,7 +60,9 @@ export default function CardsData() {
       {cardsData?.map((card, index) => (
         <div
           key={index}
-          className={`relative flex flex-col h-[175px] w-full md:h-[285px] p-[16px] md:p-6 rounded-2xl border ${!darkMode && 'shadow-xl shadow-gray-200 bg-white hover:bg-[#F3F8FF] '} border-white bg-gray-300  space-y-1 cursor-pointer`}
+          className={`relative flex flex-col h-[175px] w-full md:h-[285px] p-[16px] md:p-6 rounded-2xl bg-white border ${
+            !darkMode && "shadow-xl shadow-gray-200"
+          } border-white  space-y-1 hover:bg-[#F3F8FF]`}
         >
           <div className="absolute -left-[5px] top-[23px] w-[5px] h-[60px] bg-[#579094] rounded-l-2xl"></div>
           <div className="flex gap-4 items-center">
@@ -75,7 +77,7 @@ export default function CardsData() {
           <h1 className="mt-2 font-semibold text-2xl text-[#1B2845] hidden lg:block">
             {card.description}
           </h1>
-          {/* <div className="h-px w-full bg-gradient-to-r from-transparent via-white/90 to-transparent"></div> */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/90 to-transparent"></div>
           <p className="text-[16px] md:text-lg text-[#8D8D8D]">
             {" "}
             {card.cardText}

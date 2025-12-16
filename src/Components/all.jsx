@@ -4,8 +4,8 @@ import { useTranslation, Trans } from "react-i18next";
 import Partners from "./partners";
 import CountUp from "./additional/CountUp";
 import Cards from "../meta-data/cardsData";
-import CompanyInfo from "./companyInfo";
-import PortfolioProjects from "./portfolioProjects";
+import CompanyInfo from './companyInfo'
+import PortfolioProjects from './portfolioProjects'
 import { useTheme } from "../contexts/ThemeProvider";
 
 const BOT_TOKEN = "8529319150:AAH7QpRm1DBHoL9V8i6d69X3V9UNqsR7tAA";
@@ -72,11 +72,7 @@ export default function All() {
   };
 
   return (
-    <div
-      className={`${
-        darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-      } transition-colors duration-500`}
-    >
+    <div className={`${darkMode ? 'bg-gray-800 text-white': 'bg-white text-gray-800'} transition-colors duration-500`}>
       <section id="hero" ref={homeRef} className="bg-[#163133] h-screen">
         <div className="relative flex flex-col md:flex-row justify-center md:justify-between space-y-2 items-start md:items-center h-full pt-[100px] max-w-[1300px] mx-auto px-[30px] md:px-5 lg:px-6 2xl:px-2 text-white bg-[url('/image/HopeImg.webp')] bg-cover bg-center bg-no-repeat md:bg-none before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent  before:z-0">
           <div className="relative z-10 space-y-[10px] md:space-y-[36px] flex flex-col justify-center items-start">
@@ -158,7 +154,7 @@ export default function All() {
           <div className="relative z-10 md:relative md:w-[512px] md:h-[700px] rounded-2xl md:overflow-visible">
             <img
               src="/image/HopeImg.webp"
-              className="hidden md:block w-full h-[550px] md:h-[600px] xl:h-[620px] object-cover rounded-4xl"
+              className="hidden md:block w-full h-[550px] md:h-[660px] xl:h-[670px]  object-cover rounded-4xl"
             />
 
             <div className="md:absolute md:left-[-100px] bottom-[105px] bg-white/5 backdrop-blur-md border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">
@@ -179,7 +175,9 @@ export default function All() {
                 </div>
                 <div className="space-y-3">
                   <p className="text-3xl font-bold">3+</p>
-                  <p className="text-lg font-medium">Business partnerss</p>
+                  <p className="text-lg font-medium">
+                    Business partners
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,9 +193,7 @@ export default function All() {
         <section
           ref={aboutRef}
           id="AboutUs"
-          className={`max-w-[1440px] mx-auto space-y-[40px] my-[80px] px-[20px] md:px-4 lg:px-3 2xl:px-0 ${
-            darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-          } transition-colors duration-500`}
+          className={`max-w-[1440px] mx-auto space-y-[40px] my-[80px] px-[20px] md:px-4 lg:px-3 2xl:px-0 ${darkMode ? 'bg-gray-800 text-white': 'bg-white text-gray-800'} transition-colors duration-500`}
         >
           <div className="space-y-4 items-center justify-center flex flex-col text-center">
             <button className="rounded-full text-[#579094] font-medium border border-[#579094]  px-8 py-3 md:h-[55px] text-center justify-center items-center">
@@ -316,35 +312,29 @@ export default function All() {
             <p className=" text-center text-[16px] md:text-xl w-[335px] md:w-[700px]">
               {t("portfolioSection.description")}
             </p>
-            <PortfolioProjects />
+              <PortfolioProjects/>
           </div>
         </section>
 
         <section
           ref={contactRef}
           id="Contact"
-          className={`h-full flex flex-col justify-center items-center ${
-            darkMode ? "bg-gray-800 text-white" : "bg-[#F2F2F2] text-gray-800"
-          } transition-colors duration-500`}
+          className={`h-full flex flex-col justify-center items-center ${darkMode ? 'bg-gray-800 text-white': 'bg-[#F2F2F2] text-gray-800'} transition-colors duration-500`}
         >
-          <div
-            className="max-w-[1300px] mx-auto flex flex-col xl:flex-row items-center justify-center md:justify-between md:w-full py-8
-           px-[4px] space-y-[20px] xl:space-y-0"
-          >
+          <div className="max-w-[1300px] mx-auto flex flex-col xl:flex-row items-center justify-center md:justify-between md:w-full py-8
+           px-[4px] space-y-[20px] xl:space-y-0">
             <div className="flex flex-col justify-between gap-[20px] md:gap-[60px] h-full ">
               <Header
                 badge={t("contactSection.badge")}
                 title={t("contactSection.title")}
                 desc={t("contactSection.description")}
               />
-              <CompanyInfo />
+              <CompanyInfo/>
             </div>
 
             <form
               onSubmit={handleSubmit}
-              className={`w-full max-w-xl space-y-4 rounded-3xl p-6 shadow-xl py-8 text-black ${
-                darkMode ? "bg-gray-300" : "bg-white"
-              }`}
+              className={`w-full max-w-xl space-y-4 rounded-3xl p-6 shadow-xl py-8 text-black ${darkMode ? 'bg-gray-300' : 'bg-white'}`}
             >
               <div className="flex flex-col md:flex-row gap-4 w-full">
                 <Input
@@ -443,9 +433,7 @@ function Input({ label, name, placeholder }) {
       <input
         name={name}
         required
-        className={`w-full rounded-lg border px-4 py-2 focus:outline-none  focus:ring-2 focus:ring-[#579094] ${
-          darkMode ? "border-gray-400" : "border-gray-300"
-        }`}
+        className={`w-full rounded-lg border px-4 py-2 focus:outline-none  focus:ring-2 focus:ring-[#579094] ${darkMode ? 'border-gray-400' : 'border-gray-300'}`}
         placeholder={placeholder}
       />
     </div>
