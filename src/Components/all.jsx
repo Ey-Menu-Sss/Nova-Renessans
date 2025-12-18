@@ -75,7 +75,7 @@ export default function All() {
     <div className={`${darkMode ? 'bg-gray-800 text-white': 'bg-white text-gray-800'} transition-colors duration-500`}>
       <section id="hero" ref={homeRef} className="bg-[#163133] h-screen">
         <div className="relative flex flex-col md:flex-row justify-center md:justify-between space-y-2 items-start md:items-center h-full pt-[100px] max-w-[1300px] mx-auto px-[30px] md:px-5 lg:px-6 2xl:px-2 text-white bg-[url('/image/HopeImg.webp')] bg-cover bg-center bg-no-repeat md:bg-none before:absolute before:inset-0 before:bg-black/60 md:before:bg-transparent  before:z-0">
-          <div className="relative z-10 space-y-[10px] md:space-y-[36px] flex flex-col justify-center items-start">
+          <div className="relative z-10 space-y-2 md:space-y-6 flex flex-col justify-center items-start">
             <h1 className="max-w-[690px] text-[35px] md:text-[42px] xl:text-[49px] font-semibold leading-tight">
               {t("hero.title")}
             </h1>
@@ -155,7 +155,7 @@ export default function All() {
           <div className="relative z-10 md:relative md:w-[512px] md:h-[700px] rounded-2xl md:overflow-visible">
             <img
               src="/image/HopeImg.webp"
-              className="hidden md:block w-full h-[550px] md:h-[660px] xl:h-[670px]  object-cover rounded-4xl"
+              className="hidden md:block w-full h-[550px] md:h-[600px] xl:h-[620px]  object-cover rounded-4xl"
             />
 
             <div className="md:absolute md:left-[-100px] bottom-[105px] bg-white/5 backdrop-blur-md border border-[#E8E8E880] text-white p-4 rounded-xl flex items-center gap-3">

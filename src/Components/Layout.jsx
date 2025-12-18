@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "./LanguageSelector";
-import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../contexts/ThemeProvider";
+// import { Sun, Moon } from "lucide-react";
+// import { useTheme } from "../contexts/ThemeProvider";
 
 function Layout() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -19,7 +19,7 @@ function Layout() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { darkMode, toggleTheme } = useTheme();
+  // const { darkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -91,7 +91,7 @@ function Layout() {
           </Link>
 
           <div className="flex gap-12">
-            <div className="md:gap-[40px] xl:gap-[56px] text-black dark:text-white items-center hidden lg:flex">
+            <div className="md:gap-5 xl:gap-8 text-white items-center hidden lg:flex">
               {[
                 { label: t("navbar.home"), ref: homeRef },
                 { label: t("navbar.about"), ref: aboutRef },
@@ -118,34 +118,30 @@ function Layout() {
               <LanguageSelector />
 
               {/* Dark / Light Toggle */}
-              <button
+              {/* <button
                 onClick={toggleTheme}
                 className="relative w-11 h-11 rounded-full flex items-center justify-center
                  bg-black/10 dark:bg-white/10 cursor-pointer
                  hover:scale-110 transition-all duration-300
                  overflow-hidden"
               >
-                {/* Sun */}
                 <Sun
                   className={`absolute w-5 h-5 text-yellow-400 transition-all duration-500
                   ${
-                    // show sun when NOT in dark mode
                     darkMode
                       ? "scale-0 rotate-90 opacity-0"
                       : "scale-100 rotate-0 opacity-100"
                   }`}
                 />
-                {/* Moon */}
                 <Moon
                   className={`absolute w-5 h-5 text-blue-300 transition-all duration-500
                   ${
-                    // show moon when in dark mode
                     darkMode
                       ? "scale-100 rotate-0 opacity-100"
                       : "scale-0 -rotate-90 opacity-0"
                   }`}
                 />
-              </button>
+              </button> */}
 
               <div className="lg:hidden flex gap-[30px] justify-center items-center">
                 <button
